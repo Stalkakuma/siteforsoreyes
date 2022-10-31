@@ -1,15 +1,16 @@
-import fetchPosts from "../lib/queries/fetch-posts";
+import fetchThreads from "../lib/queries/fetch-threads";
 import queryClient from "../lib/clients/react-query";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import { useSession } from "next-auth/react";
 import { useQuery } from "react-query";
 import { dehydrate } from "react-query/hydration";
-import Post from "../components/pages/posts";
+import ThreadsList from "../components/pages/threads";
+import Layout from "components/pages/layout";
 
-const PostsPage: InferGetServerSidePropsType<
+const ForumPage: InferGetServerSidePropsType<
   typeof getServerSideProps
 > = ({}) => {
-  const { data } = useQuery("posts", fetchPosts);
+  const { data } = useQuery("threads", fetchThreads);
   const { data: session, status } = useSession();
 
   if (!session) {
@@ -17,15 +18,15 @@ const PostsPage: InferGetServerSidePropsType<
   }
 
   return (
-    <>
-      <h3>THESE ARE POSTS</h3>
-      <Post posts={data} />
-    </>
+    <Layout>
+      <h3>Welcome to the Forum</h3>
+      <ThreadsList threads={data} />
+    </Layout>
   );
 };
 
 export const getServerSideProps: GetServerSideProps = async ({ req }) => {
-  await queryClient.prefetchQuery("posts", fetchPosts);
+  await queryClient.prefetchQuery("threads", fetchThreads);
 
   return {
     props: {
@@ -33,4 +34,4 @@ export const getServerSideProps: GetServerSideProps = async ({ req }) => {
     },
   };
 };
-export default PostsPage;
+export default ForumPage;

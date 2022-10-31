@@ -16,20 +16,20 @@ import {
   useDisclosure,
   Flex,
 } from "@chakra-ui/react";
-import savePost from "../../../lib/mutations/save-post";
-import fetchPosts from "lib/queries/fetch-posts";
+import saveThread from "../../../lib/mutations/save-thread";
+import fetchThreads from "lib/queries/fetch-threads";
 import queryClient from "lib/clients/react-query";
 import { useSession } from "next-auth/react";
 import { useMutation, useQuery } from "react-query";
 import { Formik, Field } from "formik";
 
-const AddNewPostForm = () => {
+const AddNewThreadForm = () => {
   const { data: session, status } = useSession();
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const { refetch } = useQuery("posts", fetchPosts);
-  const mutation = useMutation(savePost, {
+  const { refetch } = useQuery("threads", fetchThreads);
+  const mutation = useMutation(saveThread, {
     onSuccess: async () => {
-      await queryClient.invalidateQueries("posts");
+      await queryClient.invalidateQueries("threads");
       refetch();
     },
   });
@@ -38,7 +38,8 @@ const AddNewPostForm = () => {
   if (!session) {
     return <div>Not Authenticated.</div>;
   }
-  const createPost = (values) => {
+
+  const createThread = (values) => {
     const title = values.title;
     const body = values.body;
     const data = {
@@ -65,7 +66,7 @@ const AddNewPostForm = () => {
                 <Formik
                   initialValues={{ title: "", body: "" }}
                   onSubmit={(values, actions) => {
-                    createPost(values);
+                    createThread(values);
                     actions.resetForm({
                       values: {
                         title: "",
@@ -115,4 +116,5 @@ const AddNewPostForm = () => {
     </Flex>
   );
 };
-export default AddNewPostForm;
+
+export default AddNewThreadForm;

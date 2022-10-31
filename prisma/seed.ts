@@ -7,9 +7,10 @@ async function main() {
       email: faker.internet.email(),
       name: faker.name.fullName(),
       image: faker.image.image(),
-      posts: {
+      threads: {
         create: {
-          title: faker.lorem.paragraph(),
+          title: faker.lorem.words(4),
+          body: faker.lorem.paragraphs(),
         },
       },
     };

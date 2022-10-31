@@ -51,6 +51,7 @@ model User {
   accounts      Account[]
   sessions      Session[]
   posts         Post[]
+  threads       Thread[]
 
   @@map("users")
 }
@@ -63,6 +64,19 @@ model VerificationToken {
   @@unique([identifier, token])
 }
 
+model Thread {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  title     String
+  body      String
+  published Boolean  @default(false)
+  author    User     @relation(fields: [authorId], references: [id])
+  authorId  String
+  posts     Post[]
+
+  @@map("threads")
+}
+
 model Post {
   id         String     @id @default(cuid())
   createdAt  DateTime   @default(now())
@@ -71,6 +85,8 @@ model Post {
   author     User       @relation(fields: [authorId], references: [id])
   authorId   String
   categories Category[]
+  Thread     Thread?    @relation(fields: [threadId], references: [id])
+  threadId   String?
 }
 
 model Category {

@@ -1,35 +1,34 @@
-import Page from "../../components/pages/users/[id]";
+import Page from "../../components/pages/threads/[id]";
 import queryClient from "../../lib/clients/react-query";
-import fetchUser from "../../lib/queries/fetch-user";
+import fetchThread from "../../lib/queries/fetch-thread";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
-import { useSession, getSession } from "next-auth/react";
+import { getSession, useSession } from "next-auth/react";
 import { useQuery } from "react-query";
 import { dehydrate } from "react-query/hydration";
 import Layout from "components/pages/layout";
 
-const AccountPage: InferGetServerSidePropsType<typeof getServerSideProps> = ({
-  id,
-}) => {
-  const { data } = useQuery("user", () => fetchUser(id as string));
+const ForumThreadPage: InferGetServerSidePropsType<
+  typeof getServerSideProps
+> = ({ id }) => {
+  const { data } = useQuery("thread", () => fetchThread(id));
   const { data: session, status } = useSession();
-
   if (!session) {
     return <div>Not authenticated.</div>;
   }
-
   return (
     <Layout>
-      <div>
-        <title>{`${session.user.name}'s profile`}</title>
-      </div>
-      <Page user={data} />
+      <h3>
+        <title>Title of Thread</title>
+      </h3>
+      <Page threadData={data} />
     </Layout>
   );
 };
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
-  await queryClient.prefetchQuery("user", () => fetchUser(query.id as string));
-
+  await queryClient.prefetchQuery("thread", () =>
+    fetchThread(query.id as string)
+  );
   return {
     props: {
       dehydratedState: dehydrate(queryClient),
@@ -38,4 +37,4 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   };
 };
 
-export default AccountPage;
+export default ForumThreadPage;

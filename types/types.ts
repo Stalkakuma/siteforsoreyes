@@ -3,15 +3,17 @@ type Author = {
   image: string;
 };
 
-export interface PostData {
-  post: PostType;
-}
-
-export interface PostType {
+export type ForumDataTypes = {
   id: string;
-  createdAt: Date;
   title: String;
-  published: Boolean;
+  body: String;
+  authorId: string;
   author: Author;
-  authorId: String;
-}
+  published: boolean;
+  createdAt: Date;
+  posts?: ForumDataTypes[];
+};
+
+export type ForumData = {
+  threadData: ForumDataTypes;
+};

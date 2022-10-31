@@ -6,17 +6,17 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === "POST") {
     try {
       const { body } = req;
-      const post = await prisma.post.create({
+      const thread = await prisma.thread.create({
         data: JSON.parse(body),
       });
 
-      return res.status(200).json(post);
+      return res.status(200).json(thread);
     } catch (error) {
       return res.status(422).json(error);
     }
   } else if (req.method === "GET") {
     try {
-      const posts = await prisma.post.findMany({
+      const threads = await prisma.thread.findMany({
         include: {
           author: true,
         },
@@ -27,7 +27,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         ],
       });
 
-      return res.status(200).json(posts);
+      return res.status(200).json(threads);
     } catch (error) {
       return res.status(422).json(error);
     }

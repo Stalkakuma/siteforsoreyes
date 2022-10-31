@@ -1,3 +1,4 @@
+import Layout from "components/pages/layout";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import { useSession } from "next-auth/react";
 import { useQuery } from "react-query";
@@ -17,12 +18,12 @@ const MyAccountPage: InferGetServerSidePropsType<
   }
 
   return (
-    <>
+    <Layout>
       <div>
         <title>All users</title>
       </div>
       <Page users={data} />
-    </>
+    </Layout>
   );
 };
 
