@@ -6,14 +6,14 @@ import Post from "./post";
 
 const ThreadPageComponent: FC<ForumData> = ({ threadData }) => {
   return (
-    <VStack w={"100%"}>
-      {!threadData ? <Text>Loading...</Text> : <Post threadData={threadData} />}
+    <VStack w={"100%"} alignItems={"start"} overflowY={"scroll"}>
+      <Post threadData={threadData} />
       {threadData?.posts.map((post) => (
-        <Box key={post.id}>
-          <Post threadData={post} />
-        </Box>
+        // <VStack w={"100%"} key={post.id}>
+        <Post key={post.id} threadData={post} />
+        // </VStack>
       ))}
-      <AddNewPostForm />
+      <AddNewPostForm id={threadData.id} />
     </VStack>
   );
 };

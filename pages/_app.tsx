@@ -5,6 +5,7 @@ import type { AppProps } from "next/app";
 import { QueryClientProvider } from "react-query";
 import { Hydrate } from "react-query/hydration";
 import queryClient from "../lib/clients/react-query";
+import theme from "../styles/theme";
 
 export default function App({
   Component,
@@ -14,7 +15,7 @@ export default function App({
     <QueryClientProvider client={queryClient}>
       <Hydrate state={pageProps.dehydratedState}>
         <SessionProvider session={session}>
-          <ChakraProvider>
+          <ChakraProvider theme={theme}>
             <Component {...pageProps} />
           </ChakraProvider>
         </SessionProvider>

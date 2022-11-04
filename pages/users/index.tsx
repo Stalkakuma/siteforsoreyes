@@ -1,4 +1,4 @@
-import Layout from "components/pages/layout";
+import Layout from "components/layout";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import { useSession } from "next-auth/react";
 import { useQuery } from "react-query";

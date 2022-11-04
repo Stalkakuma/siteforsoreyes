@@ -3,7 +3,7 @@ import { Container } from "@chakra-ui/react";
 const Layout = ({ children }) => {
   return (
     <Container maxW={"container.xl"} py={10}>
-      {children}
+      <main>{children}</main>
     </Container>
   );
 };

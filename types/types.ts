@@ -1,6 +1,7 @@
 type Author = {
   name: string;
   image: string;
+  email: string;
 };
 
 export type ForumDataTypes = {

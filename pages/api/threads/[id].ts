@@ -10,7 +10,11 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       const threads = await prisma.thread.findUnique({
         include: {
           author: true,
-          posts: true,
+          posts: {
+            include: {
+              author: true,
+            },
+          },
         },
         where: {
           id: threadId,

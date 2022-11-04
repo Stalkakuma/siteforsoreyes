@@ -17,19 +17,19 @@ import {
   Flex,
 } from "@chakra-ui/react";
 import savePost from "../../../lib/mutations/save-post";
-import fetchPosts from "lib/queries/fetch-posts";
+import fetchThread from "lib/queries/fetch-thread";
 import queryClient from "lib/clients/react-query";
 import { useSession } from "next-auth/react";
 import { useMutation, useQuery } from "react-query";
 import { Formik, Field } from "formik";
 
-const AddNewPostForm = () => {
+const AddNewPostForm = ({ id }) => {
   const { data: session, status } = useSession();
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const { refetch } = useQuery("posts", fetchPosts);
+  const { refetch } = useQuery("thread", () => fetchThread(id));
   const mutation = useMutation(savePost, {
     onSuccess: async () => {
-      await queryClient.invalidateQueries("posts");
+      await queryClient.invalidateQueries("thread");
       refetch();
     },
   });
@@ -39,11 +39,15 @@ const AddNewPostForm = () => {
     return <div>Not Authenticated.</div>;
   }
   const createPost = (values) => {
-    const title = values.title;
     const body = values.body;
+    const threadId = id;
     const data = {
-      title,
       body,
+      Thread: {
+        connect: {
+          id: threadId,
+        },
+      },
       author: {
         connect: {
           email: session.user.email,
@@ -54,41 +58,31 @@ const AddNewPostForm = () => {
   };
 
   return (
-    <Flex w={"90%"} justify={"end"}>
-      <Button onClick={onOpen}>New Topic</Button>
+    <Flex w={"100%"} justify={"end"}>
+      <Button variant={"solid"} onClick={onOpen}>
+        {"Reply"}
+      </Button>
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay>
-          <ModalContent>
+          <ModalContent maxW={"4xl"}>
             <ModalCloseButton />
-            <Stack spacing={4}>
+            <Stack py={7} spacing={4}>
               <Box p={4} shadow="lg" rounded="lg">
                 <Formik
-                  initialValues={{ title: "", body: "" }}
+                  initialValues={{ body: "" }}
                   onSubmit={(values, actions) => {
                     createPost(values);
                     actions.resetForm({
                       values: {
-                        title: "",
                         body: "",
                       },
                     });
+                    onClose();
                   }}
                 >
                   {({ handleSubmit, errors, touched }) => (
                     <form onSubmit={handleSubmit}>
                       <Stack spacing={4}>
-                        <FormControl isRequired>
-                          <FormLabel htmlFor="h3">
-                            {"What's your Topic?"}
-                          </FormLabel>
-                          <Field
-                            as={Input}
-                            id="title"
-                            name="title"
-                            type="text"
-                            variant="filled"
-                          />
-                        </FormControl>
                         <FormControl isRequired>
                           <Field
                             as={Textarea}
@@ -100,7 +94,7 @@ const AddNewPostForm = () => {
                         </FormControl>
                         <FormControl>
                           <Button type="submit" loadingText="Posting...">
-                            Post
+                            {"Post"}
                           </Button>
                         </FormControl>
                       </Stack>

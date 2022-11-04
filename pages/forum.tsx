@@ -5,7 +5,7 @@ import { useSession } from "next-auth/react";
 import { useQuery } from "react-query";
 import { dehydrate } from "react-query/hydration";
 import ThreadsList from "../components/pages/threads";
-import Layout from "components/pages/layout";
+import Layout from "components/layout";
 
 const ForumPage: InferGetServerSidePropsType<
   typeof getServerSideProps
@@ -19,7 +19,6 @@ const ForumPage: InferGetServerSidePropsType<
 
   return (
     <Layout>
-      <h3>Welcome to the Forum</h3>
       <ThreadsList threads={data} />
     </Layout>
   );

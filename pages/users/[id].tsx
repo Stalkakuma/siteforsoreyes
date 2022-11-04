@@ -5,7 +5,7 @@ import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import { useSession, getSession } from "next-auth/react";
 import { useQuery } from "react-query";
 import { dehydrate } from "react-query/hydration";
-import Layout from "components/pages/layout";
+import Layout from "components/layout";
 
 const AccountPage: InferGetServerSidePropsType<typeof getServerSideProps> = ({
   id,

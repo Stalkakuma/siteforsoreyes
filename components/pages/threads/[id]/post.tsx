@@ -1,5 +1,6 @@
 import {
-  Avatar,
+  Box,
+  Image,
   Text,
   VStack,
   HStack,
@@ -11,13 +12,30 @@ import { ForumData } from "types/types";
 
 const Post: FC<ForumData> = ({ threadData }: ForumData) => {
   return (
-    <Container maxW={"container.lg"}>
-      <VStack w={"100%"} shadow="lg" rounded="lg" py={10}>
-        <HStack align={"top"} justify={"start"} maxW={"xl"} w={"100%"}>
-          <Avatar name={threadData.author.name} src={threadData.author.image} />
-          <VStack w={"100%"}>
-            <Text>{threadData.author.name}</Text>
-            <Heading>{threadData.title}</Heading>
+    <Container
+      marginInlineStart={"0px"}
+      marginInlineEnd={"0px"}
+      maxW={"container.lg"}
+    >
+      {threadData.title ? <Heading py={8}>{threadData.title}</Heading> : null}
+      <VStack
+        align={"start"}
+        w={"100%"}
+        borderBottom={"solid 1px gray"}
+        py={10}
+      >
+        <HStack align={"top"} gap={10}>
+          <Image
+            h={"100px"}
+            borderRadius="xl"
+            src={threadData.author.image}
+            alt={threadData.author.name}
+          />
+          <VStack gap={10} align={"start"} w={"100%"}>
+            <VStack>
+              <Text>{threadData.author.name}</Text>
+              <Text>{threadData.author.email}</Text>
+            </VStack>
             <Text>{threadData.body}</Text>
           </VStack>
         </HStack>

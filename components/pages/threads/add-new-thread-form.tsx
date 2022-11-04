@@ -15,6 +15,7 @@ import {
   ModalCloseButton,
   useDisclosure,
   Flex,
+  background,
 } from "@chakra-ui/react";
 import saveThread from "../../../lib/mutations/save-thread";
 import fetchThreads from "lib/queries/fetch-threads";
@@ -22,6 +23,7 @@ import queryClient from "lib/clients/react-query";
 import { useSession } from "next-auth/react";
 import { useMutation, useQuery } from "react-query";
 import { Formik, Field } from "formik";
+import { AddIcon } from "@chakra-ui/icons";
 
 const AddNewThreadForm = () => {
   const { data: session, status } = useSession();
@@ -53,13 +55,23 @@ const AddNewThreadForm = () => {
     };
     mutation.mutate(data);
   };
-
+  //TODO try drawer instead of modal
   return (
-    <Flex w={"90%"} justify={"end"}>
-      <Button onClick={onOpen}>New Topic</Button>
-      <Modal isOpen={isOpen} onClose={onClose}>
+    <Flex w={"100%"} justify={"end"}>
+      <Button size={"lg"} gap={4} variant={"solid"} onClick={onOpen}>
+        <AddIcon />
+        {"New Topic"}
+      </Button>
+
+      <Modal size={"4xl"} isOpen={isOpen} onClose={onClose}>
         <ModalOverlay>
-          <ModalContent>
+          <ModalContent
+            border={"solid 1px #000"}
+            bgGradient={"linear(to-b, #283244 0%, #151a23 100%)"}
+            boxShadow={"0 0 0 1px #3d434f inset,0 5px 10px rgba(0,0,0,0.8)"}
+            zIndex={"1000"}
+            position={"fixed"}
+          >
             <ModalCloseButton />
             <Stack spacing={4}>
               <Box p={4} shadow="lg" rounded="lg">
@@ -77,21 +89,27 @@ const AddNewThreadForm = () => {
                 >
                   {({ handleSubmit, errors, touched }) => (
                     <form onSubmit={handleSubmit}>
-                      <Stack spacing={4}>
+                      <Stack maxH={"100%"} spacing={4} py={8}>
                         <FormControl isRequired>
-                          <FormLabel htmlFor="h3">
-                            {"What's your Topic?"}
-                          </FormLabel>
-                          <Field
-                            as={Input}
-                            id="title"
-                            name="title"
-                            type="text"
-                            variant="filled"
-                          />
+                          <Box w={"50%"}>
+                            <Field
+                              color={"rgba(255,255,255,0.7)"}
+                              bg={"rgba(0,0,0,0.3)"}
+                              _hover={{ bg: "rgba(0,0,0,0.3" }}
+                              as={Input}
+                              id="title"
+                              name="title"
+                              type="text"
+                              variant="filled"
+                              placeholder="Type the name of your Topic"
+                            />
+                          </Box>
                         </FormControl>
                         <FormControl isRequired>
                           <Field
+                            minH={"150px"}
+                            h={"100%"}
+                            resize={"none"}
                             as={Textarea}
                             id="body"
                             name="body"
@@ -100,7 +118,11 @@ const AddNewThreadForm = () => {
                           />
                         </FormControl>
                         <FormControl>
-                          <Button type="submit" loadingText="Posting...">
+                          <Button
+                            variant={"solid"}
+                            type="submit"
+                            loadingText="Posting..."
+                          >
                             Post
                           </Button>
                         </FormControl>
