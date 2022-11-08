@@ -17,14 +17,18 @@ const Post: FC<ForumData> = ({ threadData }: ForumData) => {
       marginInlineEnd={"0px"}
       maxW={"container.lg"}
     >
-      {threadData.title ? <Heading py={8}>{threadData.title}</Heading> : null}
+      {threadData.title ? (
+        <Heading size={"2xl"} py={8}>
+          {threadData.title}
+        </Heading>
+      ) : null}
       <VStack
         align={"start"}
         w={"100%"}
         borderBottom={"solid 1px gray"}
         py={10}
       >
-        <HStack align={"top"} gap={10}>
+        <HStack align={"top"} gap={4}>
           <Image
             h={"100px"}
             borderRadius="xl"
@@ -32,7 +36,7 @@ const Post: FC<ForumData> = ({ threadData }: ForumData) => {
             alt={threadData.author.name}
           />
           <VStack gap={10} align={"start"} w={"100%"}>
-            <VStack>
+            <VStack align={"start"}>
               <Text>{threadData.author.name}</Text>
               <Text>{threadData.author.email}</Text>
             </VStack>

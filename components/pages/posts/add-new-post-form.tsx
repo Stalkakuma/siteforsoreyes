@@ -58,7 +58,7 @@ const AddNewPostForm = ({ id }) => {
   };
 
   return (
-    <Flex w={"100%"} justify={"end"}>
+    <Flex w={"100%"} justify={"center"}>
       <Button variant={"solid"} onClick={onOpen}>
         {"Reply"}
       </Button>

@@ -5,6 +5,11 @@ const theme = extendTheme({
   components: {
     Button: buttonTheme,
   },
+
+  fonts: {
+    heading: `'Roboto', Helvetica, Arial, sans-serif`,
+    body: `'Noto Sans', Helvetica, Arial, sans-serif`,
+  },
   colors: {
     tableColor: {
       100: "#595959",
@@ -18,6 +23,7 @@ const theme = extendTheme({
         overflow: "hidden",
       },
       body: {
+        fontSize: "lg",
         color: "#fff",
         minHeight: "100%",
         height: "100vh",
