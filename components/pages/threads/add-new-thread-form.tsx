@@ -24,6 +24,7 @@ import { useSession } from "next-auth/react";
 import { useMutation, useQuery } from "react-query";
 import { Formik, Field } from "formik";
 import { AddIcon } from "@chakra-ui/icons";
+import Link from "next/link";
 
 const AddNewThreadForm = () => {
   const { data: session, status } = useSession();
@@ -35,11 +36,6 @@ const AddNewThreadForm = () => {
       refetch();
     },
   });
-
-  //TODO implement Login
-  if (!session) {
-    return <div>Not Authenticated.</div>;
-  }
 
   const createThread = (values) => {
     const title = values.title;
@@ -58,10 +54,18 @@ const AddNewThreadForm = () => {
   //TODO try drawer instead of modal
   return (
     <Flex w={"100%"} justify={"end"}>
-      <Button size={"lg"} gap={4} variant={"solid"} onClick={onOpen}>
-        <AddIcon />
-        {"New Topic"}
-      </Button>
+      {!session ? (
+        <Link href="api/auth/signin">
+          <Button size={"sm"} variant={"unavailable"}>
+            {"Login to create thread"}
+          </Button>
+        </Link>
+      ) : (
+        <Button size={"lg"} gap={4} variant={"solid"} onClick={onOpen}>
+          <AddIcon />
+          {"New Topic"}
+        </Button>
+      )}
 
       <Modal size={"4xl"} isOpen={isOpen} onClose={onClose}>
         <ModalOverlay>
@@ -73,7 +77,7 @@ const AddNewThreadForm = () => {
             position={"fixed"}
           >
             <ModalCloseButton />
-            <Stack spacing={4}>
+            <Stack py={7} spacing={4}>
               <Box p={4} shadow="lg" rounded="lg">
                 <Formik
                   initialValues={{ title: "", body: "" }}

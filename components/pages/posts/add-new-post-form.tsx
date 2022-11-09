@@ -22,8 +22,10 @@ import queryClient from "lib/clients/react-query";
 import { useSession } from "next-auth/react";
 import { useMutation, useQuery } from "react-query";
 import { Formik, Field } from "formik";
+import { useRouter } from "next/router";
 
 const AddNewPostForm = ({ id }) => {
+  const router = useRouter();
   const { data: session, status } = useSession();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { refetch } = useQuery("thread", () => fetchThread(id));
@@ -34,10 +36,6 @@ const AddNewPostForm = ({ id }) => {
     },
   });
 
-  //TODO implement Login
-  if (!session) {
-    return <div>Not Authenticated.</div>;
-  }
   const createPost = (values) => {
     const body = values.body;
     const threadId = id;
@@ -59,12 +57,30 @@ const AddNewPostForm = ({ id }) => {
 
   return (
     <Flex w={"100%"} justify={"center"}>
-      <Button variant={"solid"} onClick={onOpen}>
-        {"Reply"}
-      </Button>
+      {!session ? (
+        // <Link href="api/auth/signin">
+        <Button
+          onClick={() => router.push("/api/auth/signin")}
+          size={"sm"}
+          variant={"unavailable"}
+        >
+          {"Login to reply"}
+        </Button>
+      ) : (
+        // </Link>
+        <Button variant={"solid"} onClick={onOpen}>
+          {"Reply"}
+        </Button>
+      )}
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay>
-          <ModalContent maxW={"4xl"}>
+          <ModalContent
+            border={"solid 1px #000"}
+            bgGradient={"linear(to-b, #283244 0%, #151a23 100%)"}
+            boxShadow={"0 0 0 1px #3d434f inset,0 5px 10px rgba(0,0,0,0.8)"}
+            zIndex={"1000"}
+            position={"fixed"}
+          >
             <ModalCloseButton />
             <Stack py={7} spacing={4}>
               <Box p={4} shadow="lg" rounded="lg">
@@ -85,6 +101,9 @@ const AddNewPostForm = ({ id }) => {
                       <Stack spacing={4}>
                         <FormControl isRequired>
                           <Field
+                            minH={"150px"}
+                            h={"100%"}
+                            resize={"none"}
                             as={Textarea}
                             id="body"
                             name="body"

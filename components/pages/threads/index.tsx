@@ -24,7 +24,7 @@ const ForumPageComponent = ({ threads }) => {
     return format(new Date(createdDate), "MM/dd/yyyy");
   };
 
-  const handleClick = (e, threadId: string) => {
+  const handleVisitThread = (e, threadId: string) => {
     e?.preventDefault();
     router.push(`/threads/${threadId}`);
   };
@@ -53,7 +53,7 @@ const ForumPageComponent = ({ threads }) => {
                 <Tr
                   _hover={{ bg: "rgba(221,221,221,0.1)" }}
                   style={{ cursor: "pointer" }}
-                  onClick={(e) => handleClick(e, thread.id)}
+                  onClick={(e) => handleVisitThread(e, thread.id)}
                   key={thread.id}
                 >
                   <Td>

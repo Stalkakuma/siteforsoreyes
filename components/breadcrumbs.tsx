@@ -7,6 +7,7 @@ import {
 } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import { ChevronRightIcon } from "@chakra-ui/icons";
 
 const Breadcrumbs = () => {
   const fetchThreadTitle = async (threadId: string) => {
@@ -26,7 +27,6 @@ const Breadcrumbs = () => {
     const path = pathWithoutQuery.split("/").filter((v) => v.length > 0);
 
     path.forEach((subpath, index) => {
-      // const idParam = pathNames[index].replace("[", "").replace("]", "");
       const href = "/" + path.slice(0, index + 1).join("/");
       if (subpath !== "threads" && subpath !== "forum") {
         fetchThreadTitle(subpath);
@@ -43,12 +43,19 @@ const Breadcrumbs = () => {
   const breadcrumbs = generateBreadcrumbs();
 
   return (
-    <ChakraBreadcrumb separator={">"}>
+    <ChakraBreadcrumb separator={<ChevronRightIcon color={"whiteAlpha.700"} />}>
       {breadcrumbs?.map((crumb, index) => {
         const current = index === breadcrumbs.length - 1;
         return (
-          <BreadcrumbItem key={index} isCurrentPage={current}>
+          <BreadcrumbItem
+            key={index}
+            isCurrentPage={current}
+            textDecoration={"none"}
+            textDecorationLine={"none"}
+          >
             <BreadcrumbLink
+              textDecorationLine={"none"}
+              textDecoration={"none"}
               color={current ? "whiteAlpha.900" : "whiteAlpha.700"}
               href={crumb.href}
             >

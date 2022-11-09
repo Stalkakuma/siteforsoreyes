@@ -7,7 +7,7 @@ const nextConfig = {
       {
         source: "/threads",
         destination: "/forum",
-        permanent: true,
+        permanent: false,
       },
     ];
   },

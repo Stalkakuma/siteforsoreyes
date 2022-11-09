@@ -6,14 +6,52 @@ import {
   Flex,
   Box,
   Button,
+  Avatar,
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+  PopoverHeader,
+  PopoverBody,
+  PopoverFooter,
+  PopoverArrow,
+  PopoverCloseButton,
+  PopoverAnchor,
 } from "@chakra-ui/react";
 import Head from "next/head";
 import Breadcrumbs from "./breadcrumbs";
-import { useSession } from "next-auth/react";
+import { useSession, signOut } from "next-auth/react";
 import Link from "next/link";
 
 const Navigation = () => {
   const { data: session, status } = useSession();
+
+  const UserAvatar = () => {
+    return (
+      <Popover colorScheme={"blackAlpha"}>
+        <PopoverTrigger>
+          <Avatar
+            size={"sm"}
+            cursor={"pointer"}
+            src={session.user.image}
+            name={session.user.name}
+          />
+        </PopoverTrigger>
+        <PopoverContent
+          alignItems={"center"}
+          bg={"blackAlpha.600"}
+          zIndex={5000}
+          maxWidth={"150px"}
+        >
+          <PopoverArrow />
+          <PopoverCloseButton />
+          <PopoverHeader>Settings</PopoverHeader>
+          <PopoverBody>
+            <Button onClick={() => signOut()}>{"Logout"}</Button>
+          </PopoverBody>
+        </PopoverContent>
+      </Popover>
+    );
+  };
 
   return (
     <Flex
@@ -39,7 +77,7 @@ const Navigation = () => {
               </Button>
             </Link>
           ) : (
-            <Text>logge</Text>
+            <UserAvatar />
           )}
         </Box>
       </HStack>
