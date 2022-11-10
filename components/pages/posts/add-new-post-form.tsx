@@ -58,7 +58,6 @@ const AddNewPostForm = ({ id }) => {
   return (
     <Flex w={"100%"} justify={"center"}>
       {!session ? (
-        // <Link href="api/auth/signin">
         <Button
           onClick={() => router.push("/api/auth/signin")}
           size={"sm"}
@@ -67,7 +66,6 @@ const AddNewPostForm = ({ id }) => {
           {"Login to reply"}
         </Button>
       ) : (
-        // </Link>
         <Button variant={"solid"} onClick={onOpen}>
           {"Reply"}
         </Button>

@@ -1,5 +1,5 @@
 const savePost = async (body: any) => {
-  const res = await fetch(`/api/posts`, {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_VERCEL_URL}/api/posts`, {
     method: "POST",
     body: JSON.stringify(body),
   });

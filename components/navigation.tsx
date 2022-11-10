@@ -20,9 +20,10 @@ import {
 import Head from "next/head";
 import Breadcrumbs from "./breadcrumbs";
 import { useSession, signOut } from "next-auth/react";
-import Link from "next/link";
+import { useRouter } from "next/router";
 
 const Navigation = () => {
+  const router = useRouter();
   const { data: session, status } = useSession();
 
   const UserAvatar = () => {
@@ -71,11 +72,13 @@ const Navigation = () => {
         <Breadcrumbs />
         <Box>
           {!session ? (
-            <Link href="api/auth/signin">
-              <Button size={"sm"} variant={"solid"}>
-                {"Login"}
-              </Button>
-            </Link>
+            <Button
+              size={"sm"}
+              variant={"solid"}
+              onClick={() => router.push("/api/auth/signin")}
+            >
+              {"Login"}
+            </Button>
           ) : (
             <UserAvatar />
           )}
