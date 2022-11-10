@@ -20,8 +20,9 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
           id: threadId,
         },
       });
-
-      return res.status(200).json(threads);
+      if (threads) {
+        return res.status(200).json(threads);
+      }
     } catch (error) {
       console.log(error);
 

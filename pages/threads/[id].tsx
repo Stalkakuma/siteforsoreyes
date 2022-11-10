@@ -19,9 +19,9 @@ const ForumThreadPage: InferGetServerSidePropsType<
 };
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
-  await queryClient.prefetchQuery("thread", () =>
-    fetchThread(query.id as string)
-  );
+  await queryClient.prefetchQuery("thread", () => {
+    return fetchThread(query.id as string);
+  });
   return {
     props: {
       dehydratedState: dehydrate(queryClient),

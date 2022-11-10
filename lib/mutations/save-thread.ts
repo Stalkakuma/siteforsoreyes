@@ -1,5 +1,5 @@
 const saveThread = async (body: any) => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/threads`, {
+  const res = await fetch(`/api/threads`, {
     method: "POST",
     body: JSON.stringify(body),
   });
