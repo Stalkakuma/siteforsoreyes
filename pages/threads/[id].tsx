@@ -10,6 +10,7 @@ const ForumThreadPage: InferGetServerSidePropsType<
   typeof getServerSideProps
 > = ({ id }) => {
   const { data } = useQuery("thread", () => fetchThread(id));
+  console.log("id data", data);
 
   return (
     <Layout>
@@ -19,9 +20,9 @@ const ForumThreadPage: InferGetServerSidePropsType<
 };
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
-  await queryClient.prefetchQuery("thread", () => {
-    return fetchThread(query.id as string);
-  });
+  await queryClient.prefetchQuery("thread", () =>
+    fetchThread(query.id as string)
+  );
   return {
     props: {
       dehydratedState: dehydrate(queryClient),
