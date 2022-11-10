@@ -13,6 +13,10 @@ const ForumPage: InferGetServerSidePropsType<
   const { data } = useQuery("threads", fetchThreads);
   const { data: session, status } = useSession();
 
+  if (!data) {
+    return <h2>...Loading...</h2>;
+  }
+
   return (
     <Layout>
       <ThreadsList threads={data} />

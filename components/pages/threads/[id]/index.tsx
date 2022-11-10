@@ -5,6 +5,9 @@ import AddNewPostForm from "../../posts/add-new-post-form";
 import Post from "./post";
 
 const ThreadPageComponent: FC<ForumData> = ({ threadData }) => {
+  if (!threadData) {
+    return <h2>...Loading...</h2>;
+  }
   return (
     <VStack w={"100%"} alignItems={"start"}>
       <Post threadData={threadData} />

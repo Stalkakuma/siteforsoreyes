@@ -25,6 +25,7 @@ const ForumPageComponent = ({ threads }) => {
   };
 
   const handleVisitThread = (e, threadId: string) => {
+    console.log(threadId);
     e?.preventDefault();
     router.push(`/threads/${threadId}`);
   };
@@ -49,6 +50,7 @@ const ForumPageComponent = ({ threads }) => {
           </Thead>
           <Tbody>
             {threads?.map((thread: ForumDataTypes) => {
+              console.log("this is thread", thread);
               return (
                 <Tr
                   _hover={{ bg: "rgba(221,221,221,0.1)" }}
