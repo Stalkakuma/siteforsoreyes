@@ -10,7 +10,6 @@ const ForumThreadPage: InferGetServerSidePropsType<
   typeof getServerSideProps
 > = ({ id }) => {
   const { data } = useQuery("thread", () => fetchThread(id));
-  console.log("id data", data);
 
   return (
     <Layout>

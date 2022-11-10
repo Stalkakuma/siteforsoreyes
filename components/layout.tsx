@@ -4,7 +4,7 @@ import Navigation from "./navigation";
 const Layout = ({ children }) => {
   return (
     <>
-      {/* <Navigation /> */}
+      <Navigation />
       <Container maxW={"container.xl"} py={10}>
         <main>{children}</main>
       </Container>
