@@ -6,11 +6,15 @@ import {
   HStack,
   Container,
   Heading,
+  Flex,
 } from "@chakra-ui/react";
 import { FC } from "react";
 import { ForumData } from "types/types";
+const { v4: uuidv4 } = require("uuid");
 
 const Post: FC<ForumData> = ({ threadData }: ForumData) => {
+  console.log(threadData.body);
+  const postText = threadData.body.split("\n");
   return (
     <Container
       marginInlineStart={"0px"}
@@ -40,7 +44,19 @@ const Post: FC<ForumData> = ({ threadData }: ForumData) => {
               <Text>{threadData.author.name}</Text>
               <Text>{threadData.author.email}</Text>
             </VStack>
-            <Text>{threadData.body}</Text>
+            <VStack spacing={3} align={"start"}>
+              {postText.map((paragraph) => {
+                console.log(paragraph);
+                if (!paragraph) {
+                  return <Text key={uuidv4()}>{"\n"}</Text>;
+                }
+                return (
+                  <Text color={"rgba(255,255,255,0.8)"} key={uuidv4()}>
+                    {paragraph}
+                  </Text>
+                );
+              })}
+            </VStack>
           </VStack>
         </HStack>
       </VStack>
