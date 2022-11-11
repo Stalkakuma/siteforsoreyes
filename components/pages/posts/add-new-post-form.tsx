@@ -40,7 +40,7 @@ const AddNewPostForm = ({ id }) => {
     const body = values.body;
     const threadId = id;
     const data = {
-      body,
+      body: body,
       Thread: {
         connect: {
           id: threadId,
