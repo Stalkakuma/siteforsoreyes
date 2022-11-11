@@ -1,13 +1,11 @@
 import {
   Breadcrumb as ChakraBreadcrumb,
   BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbSeparator,
-  Text,
 } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { ChevronRightIcon } from "@chakra-ui/icons";
+import Link from "next/link";
 
 const Breadcrumbs = () => {
   const fetchThreadTitle = async (threadId: string) => {
@@ -32,9 +30,11 @@ const Breadcrumbs = () => {
         fetchThreadTitle(subpath);
         pathList.push({ href: href, label: threadName });
       }
+      //TODO change forum href to dynamic version
       if (subpath === "threads" || subpath === "forum") {
-        pathList.push({ href: href, label: "Forums" });
+        pathList.push({ href: "/forum", label: "Forums" });
       }
+      // end TODO
     });
 
     return [{ href: "/", label: "Home" }, ...pathList];
@@ -49,18 +49,14 @@ const Breadcrumbs = () => {
         return (
           <BreadcrumbItem
             key={index}
+            color={current ? "whiteAlpha.900" : "whiteAlpha.700"}
             isCurrentPage={current}
             textDecoration={"none"}
             textDecorationLine={"none"}
           >
-            <BreadcrumbLink
-              textDecorationLine={"none"}
-              textDecoration={"none"}
-              color={current ? "whiteAlpha.900" : "whiteAlpha.700"}
-              href={crumb.href}
-            >
+            <Link href={crumb.href} passHref>
               {crumb.label}
-            </BreadcrumbLink>
+            </Link>
           </BreadcrumbItem>
         );
       })}
