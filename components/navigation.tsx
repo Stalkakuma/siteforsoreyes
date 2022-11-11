@@ -1,8 +1,5 @@
 import {
-  Text,
-  VStack,
   HStack,
-  Heading,
   Flex,
   Box,
   Button,
@@ -12,12 +9,9 @@ import {
   PopoverContent,
   PopoverHeader,
   PopoverBody,
-  PopoverFooter,
   PopoverArrow,
   PopoverCloseButton,
-  PopoverAnchor,
 } from "@chakra-ui/react";
-import Head from "next/head";
 import Breadcrumbs from "./breadcrumbs";
 import { useSession, signOut } from "next-auth/react";
 import { useRouter } from "next/router";
@@ -25,7 +19,8 @@ import { useRouter } from "next/router";
 const Navigation = () => {
   const router = useRouter();
   const { data: session, status } = useSession();
-
+  //TODO stop avatar from flickering
+  // Possibly retrieve user data from Database
   const UserAvatar = () => {
     return (
       <Popover colorScheme={"blackAlpha"}>
@@ -45,7 +40,7 @@ const Navigation = () => {
         >
           <PopoverArrow />
           <PopoverCloseButton />
-          <PopoverHeader>Settings</PopoverHeader>
+          <PopoverHeader>{"Settings"}</PopoverHeader>
           <PopoverBody>
             <Button onClick={() => signOut()}>{"Logout"}</Button>
           </PopoverBody>
@@ -53,7 +48,7 @@ const Navigation = () => {
       </Popover>
     );
   };
-
+  //End TODO
   return (
     <Flex
       maxW={"none"}
