@@ -1,54 +1,13 @@
-import {
-  HStack,
-  Flex,
-  Box,
-  Button,
-  Avatar,
-  Popover,
-  PopoverTrigger,
-  PopoverContent,
-  PopoverHeader,
-  PopoverBody,
-  PopoverArrow,
-  PopoverCloseButton,
-} from "@chakra-ui/react";
+import { HStack, Flex, Box, Button } from "@chakra-ui/react";
 import Breadcrumbs from "./breadcrumbs";
-import { useSession, signOut } from "next-auth/react";
+import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
+import UserPanel from "./user-panel";
 
 const Navigation = () => {
   const router = useRouter();
   const { data: session, status } = useSession();
-  //TODO stop avatar from flickering
-  // Possibly retrieve user data from Database
-  const UserAvatar = () => {
-    return (
-      <Popover colorScheme={"blackAlpha"}>
-        <PopoverTrigger>
-          <Avatar
-            size={"sm"}
-            cursor={"pointer"}
-            src={session.user.image}
-            name={session.user.name}
-          />
-        </PopoverTrigger>
-        <PopoverContent
-          alignItems={"center"}
-          bg={"blackAlpha.600"}
-          zIndex={5000}
-          maxWidth={"150px"}
-        >
-          <PopoverArrow />
-          <PopoverCloseButton />
-          <PopoverHeader>{"Settings"}</PopoverHeader>
-          <PopoverBody>
-            <Button onClick={() => signOut()}>{"Logout"}</Button>
-          </PopoverBody>
-        </PopoverContent>
-      </Popover>
-    );
-  };
-  //End TODO
+
   return (
     <Flex
       maxW={"none"}
@@ -75,7 +34,7 @@ const Navigation = () => {
               {"Login"}
             </Button>
           ) : (
-            <UserAvatar />
+            <UserPanel />
           )}
         </Box>
       </HStack>
