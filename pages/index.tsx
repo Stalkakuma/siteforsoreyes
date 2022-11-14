@@ -13,7 +13,7 @@ export default function Home() {
     <Layout>
       <Container size={"container.lg"} flexDirection={"column"}>
         <Flex py={20} justify={"center"}>
-          <Link href="/forum">
+          <Link href="/threads">
             <ChakraBox
               initial={{
                 opacity: 0.5,

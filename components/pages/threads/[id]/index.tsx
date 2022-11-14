@@ -1,4 +1,5 @@
-import { Box, VStack, Text, Flex, Button } from "@chakra-ui/react";
+import { VStack } from "@chakra-ui/react";
+import LoadingScreen from "components/loading-screen";
 import { FC } from "react";
 import { ForumData } from "types/types";
 import AddNewPostForm from "../../posts/add-new-post-form";
@@ -6,7 +7,7 @@ import Post from "./post";
 
 const ThreadPageComponent: FC<ForumData> = ({ threadData }) => {
   if (!threadData) {
-    return <h2>...Loading...</h2>;
+    return <LoadingScreen />;
   }
   return (
     <VStack w={"100%"} alignItems={"start"}>

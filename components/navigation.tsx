@@ -13,9 +13,13 @@ const Navigation = () => {
       maxW={"none"}
       position={"sticky"}
       top={0}
-      bg={"#1a1c23"}
+      bg={"#2e3033"}
       bgImage="none"
       justify={"center"}
+      zIndex={5000}
+      py={1}
+      border={"2px"}
+      borderColor={"rgba(255,255,255,0.15)"}
     >
       <HStack
         w={"100%"}
