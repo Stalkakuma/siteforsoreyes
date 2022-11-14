@@ -9,6 +9,9 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         where: {
           email: req.query.email as string,
         },
+        include: {
+          posts: true,
+        },
       });
 
       return res.status(200).json(posts);
