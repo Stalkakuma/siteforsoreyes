@@ -1,4 +1,7 @@
+import AccessDeniedScreen from "components/access-denied";
 import Layout from "components/layout";
+import LoadingScreen from "components/loading-screen";
+import { useCurrentUser } from "lib/states/user-context";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import { useSession } from "next-auth/react";
 import { useQuery } from "react-query";
@@ -12,16 +15,18 @@ const MyAccountPage: InferGetServerSidePropsType<
 > = ({}) => {
   const { data } = useQuery("users", fetchUsers);
   const { data: session, status } = useSession();
+  const userData = useCurrentUser();
 
-  if (!session) {
-    return <div>Not authenticated.</div>;
+  if (!userData) {
+    return <LoadingScreen />;
+  }
+
+  if (!session || userData.userInfo?.role !== "ADMIN") {
+    return <AccessDeniedScreen />;
   }
 
   return (
     <Layout>
-      <div>
-        <title>All users</title>
-      </div>
       <Page users={data} />
     </Layout>
   );
