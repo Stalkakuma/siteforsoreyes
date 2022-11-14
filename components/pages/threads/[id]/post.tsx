@@ -13,7 +13,7 @@ import { ForumData } from "types/types";
 const { v4: uuidv4 } = require("uuid");
 
 const Post: FC<ForumData> = ({ threadData }: ForumData) => {
-  console.log(threadData.body);
+  threadData.body;
   const postText = threadData.body.split("\n");
   return (
     <Container
@@ -46,7 +46,6 @@ const Post: FC<ForumData> = ({ threadData }: ForumData) => {
             </VStack>
             <VStack spacing={3} align={"start"}>
               {postText.map((paragraph) => {
-                console.log(paragraph);
                 if (!paragraph) {
                   return <Text key={uuidv4()}>{"\n"}</Text>;
                 }
