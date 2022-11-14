@@ -123,6 +123,7 @@ const AddNewThreadForm = () => {
                         </FormControl>
                         <FormControl>
                           <Button
+                            onClick={onClose}
                             variant={"solid"}
                             type="submit"
                             loadingText="Posting..."

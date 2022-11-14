@@ -6,11 +6,8 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === "GET") {
     try {
       const posts = await prisma.user.findUnique({
-        include: {
-          posts: true,
-        },
         where: {
-          id: req.query.id as string,
+          email: req.query.email as string,
         },
       });
 

@@ -110,7 +110,11 @@ const AddNewPostForm = ({ id }) => {
                           />
                         </FormControl>
                         <FormControl>
-                          <Button type="submit" loadingText="Posting...">
+                          <Button
+                            onClick={onClose}
+                            type="submit"
+                            loadingText="Posting..."
+                          >
                             {"Post"}
                           </Button>
                         </FormControl>

@@ -1,4 +1,5 @@
 import { ChakraProvider } from "@chakra-ui/react";
+import { UserContextProvider } from "lib/states/user-context";
 import { SessionProvider } from "next-auth/react";
 import type { AppProps } from "next/app";
 
@@ -15,9 +16,11 @@ export default function App({
     <QueryClientProvider client={queryClient}>
       <Hydrate state={pageProps.dehydratedState}>
         <SessionProvider session={session}>
-          <ChakraProvider theme={theme}>
-            <Component {...pageProps} />
-          </ChakraProvider>
+          <UserContextProvider>
+            <ChakraProvider theme={theme}>
+              <Component {...pageProps} />
+            </ChakraProvider>
+          </UserContextProvider>
         </SessionProvider>
       </Hydrate>
     </QueryClientProvider>
