@@ -56,7 +56,7 @@ const AddNewPostForm = ({ id }) => {
   };
 
   return (
-    <Flex w={"100%"} justify={"center"}>
+    <Flex justify={"center"}>
       {!session ? (
         <Button
           onClick={() => router.push("/api/auth/signin")}
