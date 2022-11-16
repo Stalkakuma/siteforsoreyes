@@ -20,6 +20,7 @@ import { ChatIcon } from "@chakra-ui/icons";
 
 const ForumPageComponent = ({ threads }) => {
   const router = useRouter();
+
   const formatPostDate = (createdDate: Date) => {
     return format(new Date(createdDate), "MM/dd/yyyy");
   };

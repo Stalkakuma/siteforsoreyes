@@ -1,13 +1,4 @@
-import {
-  Box,
-  Image,
-  Text,
-  VStack,
-  HStack,
-  Container,
-  Heading,
-  Flex,
-} from "@chakra-ui/react";
+import { Image, Text, VStack, HStack, Heading, Flex } from "@chakra-ui/react";
 import { FC } from "react";
 import { ForumData } from "types/types";
 const { v4: uuidv4 } = require("uuid");
@@ -16,10 +7,11 @@ const Post: FC<ForumData> = ({ threadData }: ForumData) => {
   threadData.body;
   const postText = threadData.body.split("\n");
   return (
-    <Container
+    <Flex
+      w={"100%"}
       marginInlineStart={"0px"}
       marginInlineEnd={"0px"}
-      maxW={"container.lg"}
+      flexDirection={"column"}
     >
       {threadData.title ? (
         <Heading size={"2xl"} py={8}>
@@ -59,7 +51,7 @@ const Post: FC<ForumData> = ({ threadData }: ForumData) => {
           </VStack>
         </HStack>
       </VStack>
-    </Container>
+    </Flex>
   );
 };
 

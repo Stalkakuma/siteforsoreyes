@@ -26,7 +26,7 @@ const Breadcrumbs = () => {
 
     path.forEach((subpath, index) => {
       const href = "/" + path.slice(0, index + 1).join("/");
-      if (subpath !== "threads" && subpath !== "users") {
+      if (subpath !== "threads" && subpath !== "users" && subpath !== "guide") {
         fetchThreadTitle(subpath);
         pathList.push({ href: href, label: threadName });
       }
@@ -35,6 +35,9 @@ const Breadcrumbs = () => {
       }
       if (subpath === "users") {
         pathList.push({ href: href, label: "Users" });
+      }
+      if (subpath === "guide") {
+        pathList.push({ href: href, label: "Minecraft Guide" });
       }
     });
 
