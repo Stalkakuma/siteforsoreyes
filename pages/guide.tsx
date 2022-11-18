@@ -90,8 +90,70 @@ const Guide = () => {
           }
         </Text>
         <Heading as={"h2"}>{"***RESERVED FOR SERVER GUIDE***"}</Heading>
-        <Heading as={"h2"}>{"***RESERVED FOR SHADERS GUIDE***"}</Heading>
-        <List spacing={8}></List>
+        <Accordion allowMultiple>
+          <List spacing={8}>
+            <Heading as={"h2"} py={10}>
+              {"Let's setup Shaders"}
+            </Heading>
+            <Text>
+              {
+                "To take full advantage of Optifine we can setup shaders. This will make your game look significantly better, but at the cost of FPS. So only follow these steps if you are confident that your laptop is not a potato."
+              }
+            </Text>
+            <ListItem>
+              <Step
+                title={"Download Shaders!"}
+                textOne={"You can find the list of shaders "}
+                linkOne={"https://shadersmods.com/category/shaderpacks/"}
+                linkOneName={"here"}
+                textTwo={
+                  ". You can try some of them out, they range in performance costs. If you just want to download a simple yet impressive one you can try "
+                }
+                linkTwo={"https://shadersmods.com/complementary-shaders/"}
+                linkTwoName={"this"}
+                textThree={
+                  ". Just click the download button and we will use the zip file in the next step."
+                }
+              />
+            </ListItem>
+            <ListItem>
+              <Step
+                title={"Install Shaders!"}
+                textOne={
+                  "I hope you still have your Minecraft folder open! If not, locate the 'Install mods!' section to see how. Now from your Minecraft directory, navigate to folder named shaderpacks. Now place the shaders zip file we just downloaded there. End result should look like this:"
+                }
+                imageOne={"/minecraft4.png"}
+                imageOneAlt={"shaders folder"}
+              />
+            </ListItem>
+            <ListItem>
+              <Step
+                title={"Setup Shaders!"}
+                textOne={
+                  "For this next and last step, we have to launch minecraft. Once it's loaded navigate to OPTIONS... and then VIDEO SETTINGS... Once there we should see SHADERS... option, let's click on it. We should see a screen similar to this:"
+                }
+                imageOne={"/minecraft5.png"}
+                imageOneAlt={"shaders in options"}
+                additionalTextOne={
+                  "Now click one on the shader you downloaded(as indicated by the orange arrow in the picture above). This might make your game lag out, but it's just unpacking your shaders, so don't panic and don't frantically click, just wait a bit. Now click Done and..."
+                }
+              />
+            </ListItem>
+            <ListItem>
+              <Step
+                title={"You're done!"}
+                textOne={
+                  "This is it, you can now play Minecraft with shaders. There are a lot of options for shaders:"
+                }
+                imageOne={"/minecraft6.png"}
+                imageOneAlt={"shader options"}
+                additionalTextOne={
+                  "But I don't really know what they do, I just usually leave it all on default. Feel free to experiment and let me know if you find out something interesting!"
+                }
+              />
+            </ListItem>
+          </List>
+        </Accordion>
       </Container>
     </Layout>
   );

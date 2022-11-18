@@ -79,6 +79,7 @@ const Step: FC<StepProps> = ({
           )}
           {textThree}
         </Text>
+
         {imageOne && (
           <Box alignSelf={"center"}>
             <GuideImage imageLocation={imageOne} imageAlt={imageOneAlt} />
