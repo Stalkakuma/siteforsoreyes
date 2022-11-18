@@ -1,6 +1,11 @@
 import { Flex, Spinner } from "@chakra-ui/react";
+import { FC } from "react";
 
-const LoadingScreen = () => {
+interface LoadingScreenProps {
+  size?: string;
+}
+
+const LoadingScreen: FC<LoadingScreenProps> = ({ size }) => {
   return (
     <Flex w={"100%"} justify={"center"}>
       <Spinner
@@ -8,7 +13,7 @@ const LoadingScreen = () => {
         speed="0.65s"
         emptyColor="gray.200"
         color="blue.500"
-        size="xl"
+        size={size ? size : "xl"}
       />
     </Flex>
   );
