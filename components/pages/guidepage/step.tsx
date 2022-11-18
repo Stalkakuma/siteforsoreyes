@@ -19,6 +19,7 @@ interface StepProps {
   textTwo?: string;
   textThree?: string;
   additionalTextOne?: string;
+  additionalTextTwo?: string;
   linkOne?: string;
   linkOneName?: string;
   linkTwo?: string;
@@ -35,6 +36,7 @@ const Step: FC<StepProps> = ({
   textTwo,
   textThree,
   additionalTextOne,
+  additionalTextTwo,
   linkOne,
   linkOneName,
   linkTwo,
@@ -93,6 +95,15 @@ const Step: FC<StepProps> = ({
           </Box>
         )}
         {additionalTextOne && <Text>{additionalTextOne}</Text>}
+        {additionalTextTwo && (
+          <Heading
+            alignSelf={"center"}
+            size={{ base: "md", md: "lg" }}
+            as={"h4"}
+          >
+            {additionalTextTwo}
+          </Heading>
+        )}
         {imageTwo && (
           <Box alignSelf={"center"}>
             <GuideImage imageLocation={imageTwo} imageAlt={imageTwoAlt} />
