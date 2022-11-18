@@ -3,7 +3,6 @@ import Breadcrumbs from "./breadcrumbs";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import UserPanel from "./user-panel";
-
 const Navigation = () => {
   const router = useRouter();
   const { data: session, status } = useSession();
@@ -14,7 +13,6 @@ const Navigation = () => {
       position={"sticky"}
       top={0}
       bg={"#2e3033"}
-      bgImage="none"
       justify={"center"}
       zIndex={5000}
       py={1}
@@ -23,7 +21,7 @@ const Navigation = () => {
     >
       <HStack
         w={"100%"}
-        maxW={"container.xl"}
+        maxW={{ base: "sm", md: "container.xl" }}
         maxH={"50px"}
         justifyContent={"space-between"}
       >
