@@ -1,19 +1,13 @@
 import {
   Container,
-  VStack,
   List,
   ListItem,
-  ListIcon,
   Heading,
-  HStack,
   Text,
-  Link as ChakraLink,
-  Box,
+  Accordion,
 } from "@chakra-ui/react";
 import Layout from "components/layout";
-import { ChevronDownIcon } from "@chakra-ui/icons";
-import Link from "next/link";
-import GuideImage from "components/pages/guidepage/guide-image";
+import Step from "components/pages/guidepage/step";
 
 const Guide = () => {
   return (
@@ -28,127 +22,138 @@ const Guide = () => {
         <Heading as={"h2"} py={10}>
           {"Let's setup Minecraft!"}
         </Heading>
-        <List spacing={8}>
-          <ListItem>
-            <VStack align={"start"}>
-              <HStack>
-                <ListIcon as={ChevronDownIcon} />
-                <Heading as={"h3"}>Install or Update your TLauncher!</Heading>
-              </HStack>
-              <Text alignSelf={"center"}>
-                {`If you don't already have it, here's a `}
-                <ChakraLink
-                  isExternal={true}
-                  color={"blue.400"}
-                  as={Link}
-                  href={"https://tlauncher.org/en/"}
-                >
-                  link
-                </ChakraLink>
-              </Text>
-            </VStack>
-          </ListItem>
-          <ListItem>
-            <VStack align={"start"}>
-              <HStack>
-                <ListIcon as={ChevronDownIcon} />
-                <Heading as={"h3"}>Login to your account!</Heading>
-              </HStack>
-              <Text alignSelf={"center"}>
-                Before we continue, TLauncher is going to ask you to login most
-                likely. I personally use microsoft account, because Minecraft is
-                cheap and awesome and most importantly that way you can use
-                skins! You are free to use TLauncher account otherwise.
-              </Text>
-            </VStack>
-          </ListItem>
-          <ListItem>
-            <VStack align={"start"}>
-              <HStack>
-                <ListIcon as={ChevronDownIcon} />
-                <Heading as={"h3"}>Install Fabric 1.19.2!</Heading>
-              </HStack>
-              <Text alignSelf={"center"}>
-                {
+        <Accordion defaultIndex={[0, 1, 2, 3, 4]} allowMultiple>
+          <List spacing={8}>
+            <ListItem>
+              <Step
+                title={"Install or Update your TLauncher!"}
+                textOne={"If you don't already have it, here's a "}
+                linkOne={"https://tlauncher.org/en/"}
+                linkOneName={"link"}
+              />
+            </ListItem>
+            <ListItem>
+              <Step
+                title={"Login to your account!"}
+                textOne={
+                  "Before we continue, TLauncher is going to ask you to login most likely. I personally use microsoft account, because Minecraft is cheap and awesome and most importantly that way you can use skins! You are free to use TLauncher account otherwise."
+                }
+              />
+            </ListItem>
+            <ListItem>
+              <Step
+                title={"Install Fabric 1.19.2!"}
+                textOne={
                   "In your TLauncher select Fabric and install it. Fabric will help us run a few mods. For clarity, I'm adding a picture bellow:"
                 }
-              </Text>
-              <Box alignSelf={"center"}>
-                <GuideImage
-                  imageLocation="/minecraft1.png"
-                  imageAlt={"Fabric Image"}
-                />
-              </Box>
-            </VStack>
-          </ListItem>
-          <ListItem>
-            <VStack align={"start"}>
-              <HStack>
-                <ListIcon as={ChevronDownIcon} />
-                <Heading as={"h3"}>Download Mods!</Heading>
-              </HStack>
-              <Text alignSelf={"center"}>
-                {`I understand that not everyone wants to mod, but these two mods are for PERFORMANCE. Yes, up to 200% better fps! It will especially help if you are playing on potato laptop. Here are links to `}
-                <ChakraLink
-                  isExternal={true}
-                  color={"blue.400"}
-                  as={Link}
-                  href={
-                    "https://www.curseforge.com/minecraft/mc-mods/optifabric/download"
-                  }
-                >
-                  OptiFabric
-                </ChakraLink>
-                {" and "}
-                <ChakraLink
-                  isExternal={true}
-                  color={"blue.400"}
-                  as={Link}
-                  href={"https://optifine.net/downloads"}
-                >
-                  Optifine
-                </ChakraLink>
-                {
+                imageOne={"/minecraft1.png"}
+                imageOneAlt={"Fabric"}
+              />
+            </ListItem>
+            <ListItem>
+              <Step
+                title={"Download Mods!"}
+                textOne={
+                  "I understand that not everyone wants to mod, but these two mods are for PERFORMANCE. Yes, up to 200% better fps! It will especially help if you are playing on potato laptop. Here are links to "
+                }
+                linkOne={
+                  "https://www.curseforge.com/minecraft/mc-mods/optifabric/download"
+                }
+                linkOneName={"OptiFabric"}
+                textTwo={" and "}
+                linkTwo={"https://optifine.net/downloads"}
+                linkTwoName={" Optifine"}
+                textThree={
                   ". Just click download on both of them and we will use them in the next step."
                 }
-              </Text>
-            </VStack>
-          </ListItem>
-          <ListItem>
-            <VStack align={"start"}>
-              <HStack>
-                <ListIcon as={ChevronDownIcon} />
-                <Heading as={"h3"}>Install mods!</Heading>
-              </HStack>
-              <Text alignSelf={"center"}>
-                {
+              />
+            </ListItem>
+            <ListItem>
+              <Step
+                title={"Install mods!"}
+                textOne={
                   "In your TLauncher click on a open folder icon( I'm attaching a picture bellow for clarity ). This will open your Minecraft folder. Once there Navigate to a folder named mods and move the TWO FILES we just downloaded there."
                 }
-              </Text>
-              <Box alignSelf={"center"}>
-                <GuideImage
-                  imageLocation="/minecraft2.png"
-                  imageAlt={"Folder Image"}
-                />
-              </Box>
-              <Text>{"End result should look like this:"}</Text>
-              <Box alignSelf={"center"}>
-                <GuideImage
-                  imageLocation="/minecraft3.png"
-                  imageAlt={"End result"}
-                />
-              </Box>
-            </VStack>
-          </ListItem>
-        </List>
+                imageOne={"/minecraft2.png"}
+                imageOneAlt={"Folder"}
+                additionalTextOne={"End result should look like this:"}
+                imageTwo={"/minecraft3.png"}
+                imageTwoAlt={"End result"}
+              />
+            </ListItem>
+          </List>
+        </Accordion>
+
         <Text py={7}>
           {
             "For the basic guide, this should be it! You can play Minecraft now with hopefully a good performance. The next steps are OPTIONAL."
           }
         </Text>
         <Heading as={"h2"}>{"***RESERVED FOR SERVER GUIDE***"}</Heading>
-        <Heading as={"h2"}>{"***RESERVED FOR SHADERS GUIDE***"}</Heading>
-        <List spacing={8}></List>
+        <Accordion allowMultiple>
+          <List spacing={8}>
+            <Heading as={"h2"} py={10}>
+              {"Let's setup Shaders"}
+            </Heading>
+            <Text>
+              {
+                "To take full advantage of Optifine we can setup shaders. This will make your game look significantly better, but at the cost of FPS. So only follow these steps if you are confident that your laptop is not a potato."
+              }
+            </Text>
+            <ListItem>
+              <Step
+                title={"Download Shaders!"}
+                textOne={"You can find the list of shaders "}
+                linkOne={"https://shadersmods.com/category/shaderpacks/"}
+                linkOneName={"here"}
+                textTwo={
+                  ". You can try some of them out, they range in performance costs. If you just want to download a simple yet impressive one you can try "
+                }
+                linkTwo={"https://shadersmods.com/complementary-shaders/"}
+                linkTwoName={"this"}
+                textThree={
+                  ". Just click the download button and we will use the zip file in the next step."
+                }
+              />
+            </ListItem>
+            <ListItem>
+              <Step
+                title={"Install Shaders!"}
+                textOne={
+                  "I hope you still have your Minecraft folder open! If not, locate the 'Install mods!' section to see how. Now from your Minecraft directory, navigate to folder named shaderpacks. Now place the shaders zip file we just downloaded there. End result should look like this:"
+                }
+                imageOne={"/minecraft4.png"}
+                imageOneAlt={"shaders folder"}
+              />
+            </ListItem>
+            <ListItem>
+              <Step
+                title={"Setup Shaders!"}
+                textOne={
+                  "For this next and last step, we have to launch minecraft. Once it's loaded navigate to OPTIONS... and then VIDEO SETTINGS... Once there we should see SHADERS... option, let's click on it. We should see a screen similar to this:"
+                }
+                imageOne={"/minecraft5.png"}
+                imageOneAlt={"shaders in options"}
+                additionalTextOne={
+                  "Now click one on the shader you downloaded(as indicated by the orange arrow in the picture above). This might make your game lag out, but it's just unpacking your shaders, so don't panic and don't frantically click, just wait a bit. Now click Done and..."
+                }
+              />
+            </ListItem>
+            <ListItem>
+              <Step
+                title={"You're done!"}
+                textOne={
+                  "This is it, you can now play Minecraft with shaders. There are a lot of options for shaders:"
+                }
+                imageOne={"/minecraft6.png"}
+                imageOneAlt={"shader options"}
+                additionalTextOne={
+                  "But I don't really know what they do, I just usually leave it all on default. Feel free to experiment and let me know if you find out something interesting!"
+                }
+              />
+            </ListItem>
+          </List>
+        </Accordion>
       </Container>
     </Layout>
   );
