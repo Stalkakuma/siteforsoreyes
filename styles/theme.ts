@@ -23,7 +23,7 @@ const theme = extendTheme({
         overflow: "hidden",
       },
       body: {
-        fontSize: "lg",
+        fontSize: { base: "sm", md: "lg" },
         color: "#fff",
         minHeight: "100%",
         height: "100vh",

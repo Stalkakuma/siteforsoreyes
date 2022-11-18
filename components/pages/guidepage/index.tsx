@@ -30,8 +30,8 @@ const Guide = ({ likes }) => {
         maxW={"container.lg"}
         bg={"#37618a"}
         rounded={"lg"}
-        border={"50px solid"}
-        borderColor={"blackAlpha.600"}
+        border={{ base: "10px solid", md: "50px solid" }}
+        borderColor={{ base: "blackAlpha.600", md: "blackAlpha.600" }}
         py={5}
         px={10}
       >
@@ -40,7 +40,7 @@ const Guide = ({ likes }) => {
             <Flex justify={"center"}>
               <Box>
                 <AccordionButton>
-                  <Heading as={"h2"} py={10}>
+                  <Heading as={"h2"} size={{ base: "md", md: "xl" }} py={10}>
                     {"Let's setup Minecraft!"}
                   </Heading>
                   <AccordionIcon />
@@ -49,7 +49,7 @@ const Guide = ({ likes }) => {
             </Flex>
             <AccordionPanel>
               <Accordion defaultIndex={[0, 1, 2, 3, 4]} allowMultiple>
-                <List spacing={8}>
+                <List spacing={{ base: 4, md: 8 }}>
                   <ListItem>
                     <Step
                       title={"Install or Update your TLauncher!"}
@@ -123,7 +123,7 @@ const Guide = ({ likes }) => {
             <Flex justify={"center"}>
               <Box>
                 <AccordionButton>
-                  <Heading as={"h2"} py={10}>
+                  <Heading as={"h2"} size={{ base: "md", md: "xl" }} py={10}>
                     {"Let's setup Shaders"}
                   </Heading>
                   <AccordionIcon />
@@ -132,7 +132,7 @@ const Guide = ({ likes }) => {
             </Flex>
             <AccordionPanel>
               <Accordion allowMultiple>
-                <List spacing={8}>
+                <List spacing={{ base: 4, md: 8 }}>
                   <ListItem>
                     <Text px={4}>
                       {

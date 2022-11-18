@@ -10,10 +10,14 @@ import Guide from "components/pages/guidepage";
 const GuidePage: InferGetServerSidePropsType<
   typeof getServerSideProps
 > = ({}) => {
-  const { data } = useQuery("likes", fetchLikes);
+  const { data, isFetching } = useQuery("likes", fetchLikes);
 
-  if (!data) {
-    return <LoadingScreen />;
+  if (isFetching && !data) {
+    return (
+      <Layout>
+        <LoadingScreen />
+      </Layout>
+    );
   }
 
   return (
@@ -25,7 +29,6 @@ const GuidePage: InferGetServerSidePropsType<
 
 export const getServerSideProps: GetServerSideProps = async ({ req }) => {
   await queryClient.prefetchQuery("likes", fetchLikes);
-
   return {
     props: {
       dehydratedState: dehydrate(queryClient),
