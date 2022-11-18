@@ -49,11 +49,18 @@ const Step: FC<StepProps> = ({
       <Box ml={-5}>
         <AccordionButton>
           <AccordionIcon />
-          <Heading as={"h3"}>{title}</Heading>
+          <Heading as={"h3"} size={{ base: "md", md: "lg" }}>
+            {title}
+          </Heading>
           <AccordionIcon />
         </AccordionButton>
       </Box>
-      <AccordionPanel align={"start"} w={"100%"} as={VStack}>
+      <AccordionPanel
+        align={"start"}
+        w={"100%"}
+        as={VStack}
+        gap={{ base: 4, md: 8 }}
+      >
         <Text alignSelf={"center"}>
           {textOne}
           {linkOne && (

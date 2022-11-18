@@ -10,10 +10,14 @@ import LoadingScreen from "components/loading-screen";
 const ForumThreadPage: InferGetServerSidePropsType<
   typeof getServerSideProps
 > = ({ id }) => {
-  const { data } = useQuery("thread", () => fetchThread(id));
+  const { data, isFetching } = useQuery("thread", () => fetchThread(id));
 
-  if (!data) {
-    return <LoadingScreen />;
+  if (!data && isFetching) {
+    return (
+      <Layout>
+        <LoadingScreen />;
+      </Layout>
+    );
   }
 
   return (
