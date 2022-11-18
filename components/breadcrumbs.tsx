@@ -6,6 +6,7 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import { ChevronRightIcon } from "@chakra-ui/icons";
 import Link from "next/link";
+import LoadingScreen from "./loading-screen";
 
 const Breadcrumbs = () => {
   const fetchThreadTitle = async (threadId: string) => {
@@ -58,7 +59,7 @@ const Breadcrumbs = () => {
             _hover={{ filter: "brightness(50%)" }}
           >
             <Link href={crumb.href} passHref>
-              {crumb.label}
+              {crumb.label ? crumb.label : <LoadingScreen size="sm" />}
             </Link>
           </BreadcrumbItem>
         );

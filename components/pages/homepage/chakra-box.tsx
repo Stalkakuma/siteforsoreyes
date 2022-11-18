@@ -1,7 +1,7 @@
 import { chakra, shouldForwardProp } from "@chakra-ui/react";
 import Link from "next/link";
 import { motion, isValidMotionProp } from "framer-motion";
-import { useMediaQuery } from "lib/queries/media-query";
+import useMediaQuery from "lib/queries/media-query";
 
 const ChakraBoxComponent = chakra(motion.div, {
   shouldForwardProp: (prop) =>
@@ -9,9 +9,16 @@ const ChakraBoxComponent = chakra(motion.div, {
 });
 
 const ChakraBox = ({ href, title, bgColor, bordColor }) => {
-  const screenIsSmall = useMediaQuery(600);
-  const animation = screenIsSmall
-    ? { opacity: 1, scale: 1 }
+  const isTabletOrMobile = useMediaQuery("(min-width: 768px)");
+  const animation = !isTabletOrMobile
+    ? {
+        opacity: 1,
+        scale: 1,
+        perspective: 100,
+        rotateY: 0,
+        translateY: 0,
+        rotateX: 0,
+      }
     : {
         opacity: 1,
         perspective: 800,
@@ -20,7 +27,7 @@ const ChakraBox = ({ href, title, bgColor, bordColor }) => {
         scale: 1,
         rotateX: 10,
       };
-  const initial = screenIsSmall
+  const initial = !isTabletOrMobile
     ? { scale: 0.9, perspective: 0, rotateY: 0, rotateX: 0, opacity: 0.5 }
     : {
         opacity: 0.5,
@@ -29,7 +36,6 @@ const ChakraBox = ({ href, title, bgColor, bordColor }) => {
         scale: 0.9,
         rotateX: 10,
       };
-
   return (
     <Link href={href}>
       <ChakraBoxComponent
@@ -38,7 +44,7 @@ const ChakraBox = ({ href, title, bgColor, bordColor }) => {
         whileTap={animation}
         // @ts-ignore no problem in operation, although type error appears.
         transition={
-          screenIsSmall
+          !isTabletOrMobile
             ? { duration: 0.0001 }
             : {
                 duration: 0.6,

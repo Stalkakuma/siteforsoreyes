@@ -124,6 +124,49 @@ const Guide = ({ likes }) => {
               <Box>
                 <AccordionButton>
                   <Heading as={"h2"} size={{ base: "md", md: "xl" }} py={10}>
+                    {"Join my Server!"}
+                  </Heading>
+                  <AccordionIcon />
+                </AccordionButton>
+              </Box>
+            </Flex>
+            <AccordionPanel>
+              <List spacing={{ base: 4, md: 8 }}>
+                <ListItem>
+                  <Step
+                    title={"Add Server!"}
+                    textOne={
+                      "This one is pretty straight forward. With your Minecraft open, click MULTIPLAYER and then ADD SERVER... You should be greeted to a screen similar to this:"
+                    }
+                    imageOne={"/minecraft7.png"}
+                    imageOneAlt={"Add Server"}
+                    additionalTextOne={
+                      "For server name enter anything you want, this will just help you find it. As for server address I'm providing it bellow:"
+                    }
+                    additionalTextTwo={"192.168.1.13:25565"}
+                  />
+                </ListItem>
+                <ListItem>
+                  <Step
+                    title={"Join it!"}
+                    textOne={
+                      "Click done and after that You should be able to see the server in the servers list:"
+                    }
+                    imageOne={"/minecraft8.png"}
+                    imageOneAlt={"added server"}
+                    additionalTextOne={
+                      "Just select it and click JOIN SERVER... Hope to see you there!"
+                    }
+                  />
+                </ListItem>
+              </List>
+            </AccordionPanel>
+          </AccordionItem>
+          <AccordionItem border={"none"}>
+            <Flex justify={"center"}>
+              <Box>
+                <AccordionButton>
+                  <Heading as={"h2"} size={{ base: "md", md: "xl" }} py={10}>
                     {"Let's setup Shaders"}
                   </Heading>
                   <AccordionIcon />

@@ -34,7 +34,6 @@ const Post: FC<ForumData> = ({ threadData }: ForumData) => {
           <VStack gap={10} align={"start"} w={"100%"}>
             <VStack align={"start"}>
               <Text>{threadData.author.name}</Text>
-              <Text>{threadData.author.email}</Text>
             </VStack>
             <VStack spacing={3} align={"start"}>
               {postText.map((paragraph) => {
