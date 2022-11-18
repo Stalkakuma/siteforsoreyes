@@ -58,7 +58,7 @@ const Breadcrumbs = () => {
             _hover={{ filter: "brightness(50%)" }}
           >
             <Link href={crumb.href} passHref>
-              {crumb.label}
+              {crumb.label ? crumb.label : "..."}
             </Link>
           </BreadcrumbItem>
         );

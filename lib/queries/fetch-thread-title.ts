@@ -4,7 +4,7 @@ const fetchThreadTitle = async (threadId: string) => {
   );
   const data = await res.json();
 
-  return data.title;
+  return data;
 };
 
 export default fetchThreadTitle;
