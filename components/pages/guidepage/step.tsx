@@ -47,11 +47,19 @@ const Step: FC<StepProps> = ({
   imageTwoAlt,
 }) => {
   return (
-    <AccordionItem border={"none"} align={"start"} as={VStack}>
+    <AccordionItem
+      border={"none"}
+      align={{ base: "center", md: "start" }}
+      as={VStack}
+    >
       <Box ml={-5}>
-        <AccordionButton>
+        <AccordionButton _hover={{ bg: "none" }}>
           <AccordionIcon />
-          <Heading as={"h3"} size={{ base: "md", md: "lg" }}>
+          <Heading
+            as={"h3"}
+            size={{ base: "md", md: "lg" }}
+            _hover={{ textShadow: "0 0 3px #1f7048, 0 0 5px #56d697" }}
+          >
             {title}
           </Heading>
           <AccordionIcon />

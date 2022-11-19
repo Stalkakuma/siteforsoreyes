@@ -33,14 +33,19 @@ const Guide = ({ likes }) => {
         border={{ base: "10px solid", md: "50px solid" }}
         borderColor={{ base: "blackAlpha.600", md: "blackAlpha.600" }}
         py={5}
-        px={10}
+        px={{ base: 2, md: 10 }}
       >
         <Accordion defaultIndex={[0]} allowMultiple>
           <AccordionItem border={"none"}>
             <Flex justify={"center"}>
               <Box>
-                <AccordionButton>
-                  <Heading as={"h2"} size={{ base: "md", md: "xl" }} py={10}>
+                <AccordionButton _hover={{ bg: "none" }}>
+                  <Heading
+                    as={"h2"}
+                    size={{ base: "md", md: "xl" }}
+                    py={10}
+                    _hover={{ textShadow: "0 0 3px #FF0000, 0 0 5px #0000FF" }}
+                  >
                     {"Let's setup Minecraft!"}
                   </Heading>
                   <AccordionIcon />
@@ -116,14 +121,16 @@ const Guide = ({ likes }) => {
               "For the basic guide, this should be it! You can play Minecraft now with hopefully a good performance. The next steps are OPTIONAL."
             }
           </Text>
-          <Flex justify={"center"}>
-            <Heading as={"h2"}>{"***RESERVED FOR SERVER GUIDE***"}</Heading>
-          </Flex>
           <AccordionItem border={"none"}>
             <Flex justify={"center"}>
               <Box>
-                <AccordionButton>
-                  <Heading as={"h2"} size={{ base: "md", md: "xl" }} py={10}>
+                <AccordionButton _hover={{ bg: "none" }}>
+                  <Heading
+                    as={"h2"}
+                    size={{ base: "md", md: "xl" }}
+                    py={10}
+                    _hover={{ textShadow: "0 0 3px #FF0000, 0 0 5px #0000FF" }}
+                  >
                     {"Join my Server!"}
                   </Heading>
                   <AccordionIcon />
@@ -165,8 +172,13 @@ const Guide = ({ likes }) => {
           <AccordionItem border={"none"}>
             <Flex justify={"center"}>
               <Box>
-                <AccordionButton>
-                  <Heading as={"h2"} size={{ base: "md", md: "xl" }} py={10}>
+                <AccordionButton _hover={{ bg: "none" }}>
+                  <Heading
+                    as={"h2"}
+                    size={{ base: "md", md: "xl" }}
+                    py={10}
+                    _hover={{ textShadow: "0 0 3px #FF0000, 0 0 5px #0000FF" }}
+                  >
                     {"Let's setup Shaders"}
                   </Heading>
                   <AccordionIcon />
