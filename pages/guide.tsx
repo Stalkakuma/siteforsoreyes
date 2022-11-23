@@ -6,13 +6,15 @@ import { dehydrate } from "react-query/hydration";
 import Layout from "components/layout";
 import LoadingScreen from "components/loading-screen";
 import Guide from "components/pages/guidepage";
+import { useCurrentLoading } from "lib/states/loading-context";
 
 const GuidePage: InferGetServerSidePropsType<
   typeof getServerSideProps
 > = ({}) => {
-  const { data, isFetching } = useQuery("likes", fetchLikes);
+  const { data, status } = useQuery("likes", fetchLikes);
+  const loadingState = useCurrentLoading();
 
-  if (isFetching && !data) {
+  if (status === "loading") {
     return (
       <Layout>
         <LoadingScreen />
@@ -22,7 +24,7 @@ const GuidePage: InferGetServerSidePropsType<
 
   return (
     <Layout>
-      <Guide likes={data} />
+      {loadingState?.loading ? <LoadingScreen /> : <Guide likes={data} />}
     </Layout>
   );
 };

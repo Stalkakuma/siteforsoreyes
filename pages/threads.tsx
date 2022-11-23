@@ -6,23 +6,29 @@ import { dehydrate } from "react-query/hydration";
 import ThreadsList from "../components/pages/threads";
 import Layout from "components/layout";
 import LoadingScreen from "components/loading-screen";
+import { useCurrentLoading } from "lib/states/loading-context";
 
 const ForumPage: InferGetServerSidePropsType<
   typeof getServerSideProps
 > = ({}) => {
   const { data, status } = useQuery("threads", fetchThreads);
+  const loadingState = useCurrentLoading();
 
   if (status === "loading") {
     return (
       <Layout>
-        <LoadingScreen />;
+        <LoadingScreen />
       </Layout>
     );
   }
 
   return (
     <Layout>
-      <ThreadsList threads={data} />
+      {loadingState?.loading ? (
+        <LoadingScreen />
+      ) : (
+        <ThreadsList threads={data} />
+      )}
     </Layout>
   );
 };
