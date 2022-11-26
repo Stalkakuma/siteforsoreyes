@@ -21,7 +21,7 @@ import { ChatIcon } from "@chakra-ui/icons";
 const ForumPageComponent = ({ threads }) => {
   const router = useRouter();
 
-  const formatPostDate = (createdDate: Date) => {
+  const formatThreadDate = (createdDate: Date) => {
     return format(new Date(createdDate), "MM/dd/yyyy");
   };
 
@@ -72,7 +72,7 @@ const ForumPageComponent = ({ threads }) => {
                     </HStack>
                   </Td>
                   <Td>
-                    <Text>{formatPostDate(thread.createdAt)}</Text>
+                    <Text>{formatThreadDate(thread.createdAt)}</Text>
                   </Td>
                 </Tr>
               );
