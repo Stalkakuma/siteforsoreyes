@@ -1,6 +1,7 @@
 import { Image, Text, VStack, HStack, Heading, Flex } from "@chakra-ui/react";
 import { FC } from "react";
 import { ForumData } from "types/types";
+import { capitalizeFirstLetter } from "utils/conversions";
 import { v4 as uuidv4 } from "uuid";
 import DaysAgoTooltip from "./daysAgoTooltip";
 
@@ -17,7 +18,7 @@ const Post: FC<ForumData> = ({ threadData }: ForumData) => {
     >
       {threadData.title ? (
         <Heading size={"2xl"} py={8}>
-          {threadData.title}
+          {capitalizeFirstLetter(threadData.title as string)}
         </Heading>
       ) : null}
       <VStack

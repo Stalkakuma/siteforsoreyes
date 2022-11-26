@@ -7,6 +7,7 @@ import { useState } from "react";
 import { ChevronRightIcon } from "@chakra-ui/icons";
 import Link from "next/link";
 import LoadingScreen from "./loading-screen";
+import { capitalizeFirstLetter } from "utils/conversions";
 
 const Breadcrumbs = () => {
   const fetchThreadTitle = async (threadId: string) => {
@@ -14,7 +15,6 @@ const Breadcrumbs = () => {
       `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/threads/${threadId}`
     );
     const data = await res.json();
-
     setThreadName(data.title);
   };
   const [threadName, setThreadName] = useState();
@@ -29,7 +29,13 @@ const Breadcrumbs = () => {
       const href = "/" + path.slice(0, index + 1).join("/");
       if (subpath !== "threads" && subpath !== "users" && subpath !== "guide") {
         fetchThreadTitle(subpath);
-        pathList.push({ href: href, label: threadName });
+        const capitalisedTitle = threadName
+          ? capitalizeFirstLetter(threadName)
+          : null;
+        pathList.push({
+          href: href,
+          label: capitalisedTitle,
+        });
       }
       if (subpath === "threads") {
         pathList.push({ href: href, label: "Forums" });
