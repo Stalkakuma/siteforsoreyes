@@ -38,7 +38,7 @@ const Breadcrumbs = () => {
         });
       }
       if (subpath === "threads") {
-        pathList.push({ href: href, label: "Forums" });
+        pathList.push({ href: href, label: "Forum" });
       }
       if (subpath === "users") {
         pathList.push({ href: href, label: "Users" });
