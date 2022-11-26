@@ -17,11 +17,12 @@ import AddNewThreadForm from "./add-new-thread-form";
 import { useRouter } from "next/router";
 import { format } from "date-fns";
 import { ChatIcon } from "@chakra-ui/icons";
+import { capitalizeFirstLetter } from "utils/conversions";
 
 const ForumPageComponent = ({ threads }) => {
   const router = useRouter();
 
-  const formatPostDate = (createdDate: Date) => {
+  const formatThreadDate = (createdDate: Date) => {
     return format(new Date(createdDate), "MM/dd/yyyy");
   };
 
@@ -59,7 +60,7 @@ const ForumPageComponent = ({ threads }) => {
                 >
                   <Td>
                     <Heading as={"h3"} fontSize={"lg"} p={4}>
-                      {thread.title}
+                      {capitalizeFirstLetter(thread.title as string)}
                     </Heading>
                   </Td>
                   <Td>
@@ -72,7 +73,7 @@ const ForumPageComponent = ({ threads }) => {
                     </HStack>
                   </Td>
                   <Td>
-                    <Text>{formatPostDate(thread.createdAt)}</Text>
+                    <Text>{formatThreadDate(thread.createdAt)}</Text>
                   </Td>
                 </Tr>
               );
