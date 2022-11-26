@@ -34,7 +34,7 @@ const theme = extendTheme({
           display: "none",
         },
         backgroundColor: "#231a13",
-        backgroundImage: "url('/backgroundTwo.jpg')",
+        backgroundImage: "url('/background.jpg')",
         backgroundPosition: "bottom",
         backgroundSize: "cover",
       },
