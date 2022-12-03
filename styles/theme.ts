@@ -7,7 +7,6 @@ const theme = extendTheme({
   },
 
   fonts: {
-    // heading: `'Roboto', Helvetica, Arial, sans-serif`,
     heading: `'Nerko One', sans-serif`,
     body: `'Noto Sans', Helvetica, Arial, sans-serif`,
   },
@@ -25,19 +24,12 @@ const theme = extendTheme({
       },
       body: {
         fontSize: { base: "sm", md: "lg" },
-        color: "#fff",
-        minHeight: "100%",
+        color: "#000",
         height: "100vh",
-        overflow: "scroll",
-        scrollbarWidth: "none",
-        "&::MsOverflowStyle": "none",
-        "&::-webkit-scrollbar": {
-          display: "none",
-        },
-        backgroundColor: "#231a13",
-        backgroundImage: "url('/background.jpg')",
-        backgroundPosition: "bottom",
-        backgroundSize: "cover",
+        overflowY: "scroll",
+        overflowX: "hidden",
+        scrollbarGutter: "auto",
+        backgroundColor: "rgba(242, 242, 242, 0.6)",
       },
     },
   },
