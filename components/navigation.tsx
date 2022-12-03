@@ -9,24 +9,19 @@ const Navigation = () => {
 
   return (
     <Flex
-      maxW={"none"}
       position={"sticky"}
       top={0}
-      bg={"#2e3033"}
+      bg={"#fff"}
       justify={"center"}
       zIndex={5000}
-      py={1}
-      border={"2px"}
-      borderColor={"rgba(255,255,255,0.15)"}
     >
-      <HStack
+      <Flex
         w={"100%"}
         maxW={{ base: "sm", md: "container.xl" }}
-        maxH={"50px"}
         justifyContent={"space-between"}
       >
         <Breadcrumbs />
-        <Box>
+        <Box alignSelf={"center"}>
           {!session ? (
             <Button
               size={"sm"}
@@ -39,7 +34,7 @@ const Navigation = () => {
             <UserPanel />
           )}
         </Box>
-      </HStack>
+      </Flex>
     </Flex>
   );
 };

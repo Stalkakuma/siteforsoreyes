@@ -74,6 +74,7 @@ const ForumPageComponent = ({ threads }) => {
                         overflow={"hidden"}
                         textOverflow={"ellipsis"}
                         whiteSpace={"nowrap"}
+                        fontFamily={`'Roboto', Helvetica, Arial, sans-serif`}
                       >
                         {capitalizeFirstLetter(thread.title as string)}
                       </Heading>

@@ -1,4 +1,5 @@
 import {
+  Flex,
   Breadcrumb as ChakraBreadcrumb,
   BreadcrumbItem,
 } from "@chakra-ui/react";
@@ -54,23 +55,34 @@ const Breadcrumbs = () => {
   const breadcrumbs = generateBreadcrumbs();
 
   return (
-    <ChakraBreadcrumb separator={<ChevronRightIcon color={"whiteAlpha.700"} />}>
-      {breadcrumbs?.map((crumb, index) => {
-        const current = index === breadcrumbs.length - 1;
-        return (
-          <BreadcrumbItem
-            key={index}
-            color={current ? "whiteAlpha.900" : "whiteAlpha.700"}
-            isCurrentPage={current}
-            _hover={{ filter: "brightness(50%)" }}
-          >
-            <Link href={crumb.href} passHref>
-              {crumb.label ? crumb.label : <LoadingScreen size="sm" />}
-            </Link>
-          </BreadcrumbItem>
-        );
-      })}
-    </ChakraBreadcrumb>
+    <Flex alignItems={"stretch"}>
+      <ChakraBreadcrumb
+        as={Flex}
+        separator={<ChevronRightIcon color={"#000"} />}
+      >
+        {breadcrumbs?.map((crumb, index) => {
+          const current = index === breadcrumbs.length - 1;
+          return (
+            <BreadcrumbItem
+              px={2}
+              py={3}
+              key={index}
+              color={current ? "#ff422a" : "#000"}
+              isCurrentPage={current}
+              _hover={
+                current ? { filter: "brightness(55%)" } : { color: "#ff422a" }
+              }
+              fontFamily={`'Nerko One', sans-serif`}
+              fontSize={"3xl"}
+            >
+              <Link href={crumb.href} passHref>
+                {crumb.label ? crumb.label : <LoadingScreen size="sm" />}
+              </Link>
+            </BreadcrumbItem>
+          );
+        })}
+      </ChakraBreadcrumb>
+    </Flex>
   );
 };
 export default Breadcrumbs;

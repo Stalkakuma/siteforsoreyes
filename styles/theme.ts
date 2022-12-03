@@ -7,7 +7,8 @@ const theme = extendTheme({
   },
 
   fonts: {
-    heading: `'Roboto', Helvetica, Arial, sans-serif`,
+    // heading: `'Roboto', Helvetica, Arial, sans-serif`,
+    heading: `'Nerko One', sans-serif`,
     body: `'Noto Sans', Helvetica, Arial, sans-serif`,
   },
   colors: {

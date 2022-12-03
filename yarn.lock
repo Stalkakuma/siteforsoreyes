@@ -1911,6 +1911,11 @@
   resolved "https://registry.yarnpkg.com/@faker-js/faker/-/faker-7.6.0.tgz#9ea331766084288634a9247fcd8b84f16ff4ba07"
   integrity sha512-XK6BTq1NDMo9Xqw/YkYyGjSsg44fbNwYRx7QK2CuoQgyy+f1rrTDHoExVM5PsyXCtfl2vs2vVJ0MN0yN6LppRw==
 
+"@fontsource/nerko-one@^4.5.8":
+  version "4.5.8"
+  resolved "https://registry.yarnpkg.com/@fontsource/nerko-one/-/nerko-one-4.5.8.tgz#1916e7a9edab35c338fbb389b9e8452326934bfa"
+  integrity sha512-1alaa2lzAQD1KxrjQJbTk9NV1b1BylSMe8gXzlzo5fiYw1FWepk2mTiRTR+r/S3rGZluVQJi6trRc2LD33KADw==
+
 "@fontsource/noto-sans@^4.5.11":
   version "4.5.11"
   resolved "https://registry.yarnpkg.com/@fontsource/noto-sans/-/noto-sans-4.5.11.tgz#9074486d876577f3688f884c7ad6196d6dbea27e"
@@ -1920,6 +1925,11 @@
   version "4.5.8"
   resolved "https://registry.yarnpkg.com/@fontsource/roboto/-/roboto-4.5.8.tgz#56347764786079838faf43f0eeda22dd7328437f"
   integrity sha512-CnD7zLItIzt86q4Sj3kZUiLcBk1dSk81qcqgMGaZe7SQ1P8hFNxhMl5AZthK1zrDM5m74VVhaOpuMGIL4gagaA==
+
+"@fontsource/zen-dots@^4.5.8":
+  version "4.5.8"
+  resolved "https://registry.yarnpkg.com/@fontsource/zen-dots/-/zen-dots-4.5.8.tgz#0a867534682bd1ececba4a26df9b0892e4d96153"
+  integrity sha512-Fo1njHtPHUQk0Yr7dk4F8l/mNNJZVA4NJfwe7OayAGQWuZswEh5pCPGUDpblE/VBwno4fimFcX6sZCGx9sGK3A==
 
 "@humanwhocodes/config-array@^0.11.6":
   version "0.11.6"

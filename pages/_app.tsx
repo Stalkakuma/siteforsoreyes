@@ -8,6 +8,9 @@ import { QueryClientProvider } from "react-query";
 import { Hydrate } from "react-query/hydration";
 import queryClient from "../lib/clients/react-query";
 import theme from "../styles/theme";
+import "@fontsource/nerko-one/400.css";
+import "@fontsource/noto-sans/700.css";
+import "@fontsource/roboto/500.css";
 
 export default function App({
   Component,
