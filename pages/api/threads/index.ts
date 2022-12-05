@@ -18,7 +18,9 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     try {
       const threads = await prisma.thread.findMany({
         include: {
-          posts: true,
+          posts: {
+            include: { author: true },
+          },
           author: true,
         },
         orderBy: [

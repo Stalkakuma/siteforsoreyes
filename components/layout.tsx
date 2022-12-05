@@ -1,13 +1,13 @@
-import { Container } from "@chakra-ui/react";
+import { Flex } from "@chakra-ui/react";
 import Navigation from "./navigation";
 
 const Layout = ({ children }) => {
   return (
     <>
       <Navigation />
-      <Container maxW={"container.xl"} py={10}>
-        <main>{children}</main>
-      </Container>
+      <Flex as={"main"} w={"100%"} flexDirection={"column"} py={10}>
+        {children}
+      </Flex>
     </>
   );
 };
