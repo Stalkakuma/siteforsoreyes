@@ -48,7 +48,7 @@ const ThreadCell: FC<ForumData> = ({ threadData }) => {
         color={isActive ? "#ff422a" : null}
         mb={10}
         alignSelf={"center"}
-        as={"h3"}
+        as={"h2"}
         fontSize={"3xl"}
         overflow={"hidden"}
         textOverflow={"ellipsis"}

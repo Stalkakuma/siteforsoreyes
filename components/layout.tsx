@@ -5,7 +5,7 @@ const Layout = ({ children }) => {
   return (
     <>
       <Navigation />
-      <Flex as={"main"} w={"100%"} flexDirection={"column"} py={10}>
+      <Flex as={"main"} w={"100%"} flexDirection={"column"}>
         {children}
       </Flex>
     </>
