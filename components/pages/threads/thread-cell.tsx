@@ -96,27 +96,13 @@ const ThreadCell: FC<ForumData> = ({ threadData }) => {
         py={4}
         justify={"space-between"}
       >
-        <Flex
-          // boxShadow={"-2px -2px 2px 2px #fff"}
-          px={12}
-          py={2}
-          rounded={"xl"}
-          flexDir={"column"}
-          align={"center"}
-        >
+        <Flex px={12} py={2} rounded={"xl"} flexDir={"column"} align={"center"}>
           <Text fontSize={"xs"} color={"#394A71"}>
             {"Published"}
           </Text>
           <Text color={"#3D4C4F"}>{dateOfCreation}</Text>
         </Flex>
-        <Flex
-          // boxShadow={"2px 2px 2px 2px #fff"}
-          px={12}
-          py={2}
-          rounded={"xl"}
-          flexDir={"column"}
-          align={"center"}
-        >
+        <Flex px={12} py={2} rounded={"xl"} flexDir={"column"} align={"center"}>
           <Text fontSize={"xs"} color={"#394A71"}>
             {"Replies"}
           </Text>

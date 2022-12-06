@@ -29,27 +29,31 @@ const ForumPageComponent = ({ threads }) => {
   };
 
   return (
-    <Flex
-      align={"center"}
-      w={"100%"}
-      border={"6px #000"}
-      py={8}
-      px={20}
-      bgImage={"/gridBackground.jpg"}
-      flexDirection={"column"}
-      backgroundSize={"contain"}
-    >
-      <Grid templateColumns="repeat(3, 1fr)" gap={5} maxW={"container.xl"}>
-        {threads?.map((thread: ForumDataTypes) => (
-          <GridItem
-            key={thread.id}
-            onClick={(e) => handleVisitThread(e, thread.id)}
-          >
-            <ThreadCell threadData={thread} />
-          </GridItem>
-        ))}
-      </Grid>
-    </Flex>
+    <>
+      <Flex py={8} justify={"center"} bg={"white"} align={"center"} w={"100%"}>
+        <Heading as={"h1"}>Join in the conversations!</Heading>
+      </Flex>
+      <Flex
+        align={"center"}
+        w={"100%"}
+        py={8}
+        // px={20}
+        bgImage={"/gridBackground.jpg"}
+        flexDirection={"column"}
+        backgroundSize={"contain"}
+      >
+        <Grid templateColumns="repeat(3, 1fr)" gap={5} maxW={"container.xl"}>
+          {threads?.map((thread: ForumDataTypes) => (
+            <GridItem
+              key={thread.id}
+              onClick={(e) => handleVisitThread(e, thread.id)}
+            >
+              <ThreadCell threadData={thread} />
+            </GridItem>
+          ))}
+        </Grid>
+      </Flex>
+    </>
 
     // <Stack px={{ base: 0, md: 8 }} spacing={{ base: 2, md: 8 }}>
     //   <Heading as={"h2"}>{"Welcome to the Forum"}</Heading>
