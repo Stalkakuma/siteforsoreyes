@@ -1,8 +1,9 @@
-import { HStack, Flex, Box, Button } from "@chakra-ui/react";
+import { Flex, Box } from "@chakra-ui/react";
 import Breadcrumbs from "./breadcrumbs";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import UserPanel from "./user-panel";
+import Button from "./button";
 const Navigation = () => {
   const router = useRouter();
   const { data: session, status } = useSession();
@@ -24,12 +25,10 @@ const Navigation = () => {
         <Box alignSelf={"center"}>
           {!session ? (
             <Button
-              size={"sm"}
-              variant={"solid"}
-              onClick={() => router.push("/api/auth/signin")}
-            >
-              {"Login"}
-            </Button>
+              buttonText="Login"
+              isLink={true}
+              href={"/api/auth/signin"}
+            />
           ) : (
             <UserPanel />
           )}

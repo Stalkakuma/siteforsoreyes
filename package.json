@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "database": "pscale connect site-eyes main  --port 3309"
   },
   "dependencies": {
     "@chakra-ui/icons": "^2.0.11",

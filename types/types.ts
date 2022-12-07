@@ -18,3 +18,9 @@ export type ForumDataTypes = {
 export type ForumData = {
   threadData: ForumDataTypes;
 };
+
+export interface ButtonProps {
+  buttonText: string;
+  href?: string;
+  isLink?: boolean;
+}
