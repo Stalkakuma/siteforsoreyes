@@ -31,19 +31,32 @@ const ForumPageComponent = ({ threads }) => {
   return (
     <>
       <Flex py={20} justify={"center"} bg={"black"} align={"center"} w={"100%"}>
-        <Heading fontSize={"7xl"} color={"white"} as={"h1"}>
+        <Heading
+          fontSize={{ base: "3xl", md: "7xl" }}
+          color={"white"}
+          as={"h1"}
+        >
           Join in the conversation!
         </Heading>
       </Flex>
       <Flex
-        align={"center"}
-        w={"100%"}
+        align={{ base: "center", md: "center" }}
         py={8}
+        justify={"center"}
         bgImage={"/gridBackground.jpg"}
         flexDirection={"column"}
         backgroundSize={"contain"}
       >
-        <Grid templateColumns="repeat(3, 1fr)" gap={5} maxW={"container.xl"}>
+        <Grid
+          templateColumns={{
+            base: "repeat(1, 1fr)",
+            md: "repeat(2, 1fr)",
+            lg: "repeat(3, 1fr)",
+          }}
+          gap={{ base: 1, md: 5 }}
+          w={{ base: "", md: "100%" }}
+          px={{ md: 130 }}
+        >
           {threads?.map((thread: ForumDataTypes) => (
             <GridItem
               key={thread.id}

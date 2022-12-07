@@ -34,19 +34,19 @@ const ThreadCell: FC<ForumData> = ({ threadData }) => {
       onBlur={() => setIsActive(false)}
       onMouseEnter={() => setIsActive(true)}
       onMouseLeave={() => setIsActive(false)}
-      px={4}
-      py={6}
+      px={{ base: 0, md: 4 }}
+      py={{ base: 4, md: 6 }}
       bg={"#fff"}
       flexDirection={"column"}
       boxShadow={isActive ? "-2px -1px 4px 2px #ff422a" : "2px 1px #485F78"}
       rounded={"xl"}
-      gap={8}
+      gap={{ base: 4, md: 8 }}
       transition={"ease 0.009s"}
       _hover={{ cursor: "pointer" }}
     >
       <Heading
         color={isActive ? "#ff422a" : null}
-        mb={10}
+        mb={{ base: 0, md: 10 }}
         alignSelf={"center"}
         as={"h2"}
         fontSize={"3xl"}
