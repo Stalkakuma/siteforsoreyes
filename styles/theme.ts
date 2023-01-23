@@ -14,16 +14,13 @@ const theme = extendTheme({
     global: {
       html: {
         lineHeight: "tall",
-        height: "100vh",
-        overflow: "hidden",
+        overflowY: "scroll",
+        overflowX: "hidden",
       },
       body: {
         fontSize: { base: "sm", md: "lg" },
         color: "#000",
-        height: "100vh",
-        overflowY: "scroll",
-        overflowX: "hidden",
-        scrollbarGutter: "auto",
+        overflow: "hidden",
         backgroundColor: "rgba(242, 242, 242, 0.6)",
       },
     },

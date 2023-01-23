@@ -1,20 +1,4 @@
-import {
-  Box,
-  Stack,
-  Table,
-  Thead,
-  Tbody,
-  Tr,
-  Th,
-  Td,
-  TableContainer,
-  Heading,
-  Text,
-  HStack,
-  Flex,
-  Grid,
-  GridItem,
-} from "@chakra-ui/react";
+import { Heading, Flex, Grid, GridItem } from "@chakra-ui/react";
 import { ForumDataTypes } from "types/types";
 import AddNewThreadForm from "./add-new-thread-form";
 import { useRouter } from "next/router";
@@ -30,6 +14,9 @@ const ForumPageComponent = ({ threads }) => {
 
   return (
     <>
+      <Flex py={8} justify={"center"}>
+        <AddNewThreadForm />
+      </Flex>
       <Flex py={20} justify={"center"} bg={"black"} align={"center"} w={"100%"}>
         <Heading
           fontSize={{ base: "3xl", md: "7xl" }}

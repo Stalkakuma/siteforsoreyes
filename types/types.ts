@@ -1,3 +1,6 @@
+import { IconProps } from "@chakra-ui/react";
+import { ReactElement } from "react";
+
 type Author = {
   name: string;
   image: string;
@@ -20,7 +23,9 @@ export type ForumData = {
 };
 
 export interface ButtonProps {
-  buttonText: string;
+  buttonText?: string;
   href?: string;
   isLink?: boolean;
+  icon?: ReactElement<IconProps>;
+  disabled?: boolean;
 }
