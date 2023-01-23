@@ -19,11 +19,12 @@ import { useMutation, useQuery } from "react-query";
 import { useFormik } from "formik";
 import { AddIcon } from "@chakra-ui/icons";
 import Button from "components/button";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import * as yup from "yup";
 
 const AddNewThreadForm = () => {
   const { data: session, status } = useSession();
+  const [isSubmiting, setIsSubmiting] = useState(false);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { refetch } = useQuery("threads", fetchThreads);
   const mutation = useMutation(saveThread, {
@@ -65,7 +66,10 @@ const AddNewThreadForm = () => {
         .required("Must contain at least 10 characters"),
     }),
     onSubmit: (values) => {
+      setIsSubmiting(true);
       createThread(values);
+      setIsSubmiting(false);
+      onClose();
     },
   });
 
@@ -169,13 +173,11 @@ const AddNewThreadForm = () => {
                       )}
                     </Flex>
                     <Flex alignSelf={"center"}>
-                      <button
-                        type="submit"
-                        disabled={!formik.isValid && !!formik.touched}
-                      >
+                      <button type="submit" disabled={isSubmiting}>
                         <Button
                           buttonText="Post"
                           disabled={!formik.isValid && !!formik.touched}
+                          isSubmiting={isSubmiting}
                         />
                       </button>
                     </Flex>

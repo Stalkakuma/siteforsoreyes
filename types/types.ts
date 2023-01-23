@@ -28,4 +28,5 @@ export interface ButtonProps {
   isLink?: boolean;
   icon?: ReactElement<IconProps>;
   disabled?: boolean;
+  isSubmiting?: boolean;
 }

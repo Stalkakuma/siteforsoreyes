@@ -9,6 +9,7 @@ const Button: FC<ButtonProps> = ({
   buttonText,
   icon,
   disabled,
+  isSubmiting,
 }) => {
   return (
     <Flex
@@ -41,7 +42,7 @@ const Button: FC<ButtonProps> = ({
       grow={0}
       shrink={0}
     >
-      {icon ? <Flex zIndex={1000}>{icon}</Flex> : null}
+      {icon && <Flex zIndex={1000}>{!icon ? "..." : icon}</Flex>}
       <Text zIndex={1000}>{buttonText}</Text>
     </Flex>
   );
